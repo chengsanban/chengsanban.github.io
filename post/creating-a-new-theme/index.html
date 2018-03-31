@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Creating a New Theme - hello world</title>
-  <link rel="alternate" hreflang="en" href="https://chengsanban.github.io" />
+  <title>Creating a New Theme - 橙三瓣博客</title>
+  <link rel="alternate" hreflang="zh-cn" href="https://chengsanban.github.io" />
 
 <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -22,7 +22,7 @@
   <meta name="description" content="Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template." />
 
-  <meta name="keywords" content="Hugo, theme, jane" />
+  <meta name="keywords" content="chengsanban, blog, 橙三瓣" />
 
 
 
@@ -116,17 +116,15 @@ We&rsquo;ll start with creating a new site with a very basic template."/>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
     <a href="/">
-        <li class="mobile-menu-item">Home</li>
+        <li class="mobile-menu-item">主页</li>
       </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
+        <li class="mobile-menu-item">归档</li>
       </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
+        <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
+        <li class="mobile-menu-item">分类</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
-      </a><a href="https://gohugo.io">
-        <li class="mobile-menu-item">external-link</li>
       </a>
   </ul>
 </nav>
@@ -140,30 +138,23 @@ We&rsquo;ll start with creating a new site with a very basic template."/>
   <ul id="menu" class="menu">
     <li class="menu-item">
         
-        <a class="menu-item-link" href="/">Home</a>
+        <a class="menu-item-link" href="/">主页</a>
         
       </li><li class="menu-item">
         
-        <a class="menu-item-link" href="/post/">Archives</a>
+        <a class="menu-item-link" href="/post/">归档</a>
         
       </li><li class="menu-item">
         
-        <a class="menu-item-link" href="/tags/">Tags</a>
+        <a class="menu-item-link" href="/tags/">标签</a>
         
       </li><li class="menu-item">
         
-        <a class="menu-item-link" href="/categories/">Categories</a>
+        <a class="menu-item-link" href="/categories/">分类</a>
         
       </li><li class="menu-item">
         
         <a class="menu-item-link" href="/about/">About</a>
-        
-      </li><li class="menu-item">
-        
-        <a class="menu-item-link" href="https://gohugo.io" target="_blank">
-          external-link
-          <i class="iconfont icon-new-window"></i>
-        </a>
         
       </li>
   </ul>
@@ -190,17 +181,17 @@ We&rsquo;ll start with creating a new site with a very basic template."/>
               <a href="/categories/index/"> index </a>
             
           </div>
-        <span class="more-meta"> 7232 words </span>
-        <span class="more-meta"> 34 min read </span>
+        <span class="more-meta"> 约 7232 字 </span>
+        <span class="more-meta"> 预计阅读 34 分钟 </span>
       </div>
     </header>
 
     
     
 <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Table of Contents</h2>
+  <h2 class="post-toc-title">文章目录</h2>
   
-  <div class="post-toc-content always-active">
+  <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
 <li>
@@ -1384,16 +1375,16 @@ $ vi themes/zafta/layouts/_default/single.html
     
 <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">Author</span>
+    <span class="item-title">文章作者</span>
     <span class="item-content">Michael Henderson</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">LastMod</span>
+    <span class="item-title">上次更新</span>
     <span class="item-content">2014-09-28</span>
   </p>
   
   <p class="copyright-item">
-    <span class="item-title">License</span>
+    <span class="item-title">许可协议</span>
     <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
   </p>
 </div>
@@ -1422,12 +1413,12 @@ $ vi themes/zafta/layouts/_default/single.html
           <a class="prev" href="/post/this-is-a-very-long-title/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">This is a very long title This is a very long title This is a very long title This is a very long title This is a very long title</span>
-            <span class="prev-text nav-mobile">Prev</span>
+            <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
           <a class="next" href="/post/goisforlovers/">
             <span class="next-text nav-default">(Hu)go Template Primer</span>
-            <span class="prev-text nav-mobile">Next</span>
+            <span class="prev-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on hello world</title>
+    <title>Categories on 橙三瓣博客</title>
     <link>https://chengsanban.github.io/categories/</link>
-    <description>Recent content in Categories on hello world</description>
+    <description>Recent content in Categories on 橙三瓣博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-cn</language>
     <copyright>橙三瓣</copyright>
     
 	<atom:link href="https://chengsanban.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
