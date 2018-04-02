@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>分类 - 橙三瓣博客</title>
+  <title>一、STL产生的缘由 - 橙三瓣博客</title>
   <link rel="alternate" hreflang="zh-cn" href="https://chengsanban.github.io" />
 
 <meta name="renderer" content="webkit" />
@@ -19,7 +19,8 @@
 
 
 <meta name="author" content="橙三瓣" />
-  <meta name="description" content="chengsanban blog." />
+  <meta name="description" content="一、STL产生的缘由 人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可" />
+
   <meta name="keywords" content="chengsanban, blog, 橙三瓣" />
 
 
@@ -30,9 +31,7 @@
 <meta name="generator" content="Hugo 0.37.1" />
 
 
-<link rel="canonical" href="https://chengsanban.github.io/categories/" />
-<link href="https://chengsanban.github.io/categories/index.xml" rel="alternate" type="application/rss+xml" title="橙三瓣博客" />
-  <link href="https://chengsanban.github.io/categories/index.xml" rel="feed" type="application/rss+xml" title="橙三瓣博客" />
+<link rel="canonical" href="https://chengsanban.github.io/post/stl-allocator/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -50,10 +49,16 @@
 
 
 
-<meta property="og:title" content="Categories" />
-<meta property="og:description" content="chengsanban blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chengsanban.github.io/categories/" />
+<meta property="og:title" content="一、STL产生的缘由" />
+<meta property="og:description" content="一、STL产生的缘由 人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chengsanban.github.io/post/stl-allocator/" />
+
+
+
+<meta property="article:published_time" content="2018-04-02T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-04-02T00:00:00&#43;00:00"/>
 
 
 
@@ -65,15 +70,20 @@
 
 
 
+<meta itemprop="name" content="一、STL产生的缘由">
+<meta itemprop="description" content="一、STL产生的缘由 人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可">
+
+
+<meta itemprop="datePublished" content="2018-04-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-02T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="704">
 
 
 
-<meta itemprop="name" content="Categories">
-<meta itemprop="description" content="chengsanban blog.">
-
+<meta itemprop="keywords" content="C&#43;&#43;,C,STL," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categories"/>
-<meta name="twitter:description" content="chengsanban blog."/>
+<meta name="twitter:title" content="一、STL产生的缘由"/>
+<meta name="twitter:description" content="一、STL产生的缘由 人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -151,30 +161,109 @@
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-  
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">一、STL产生的缘由</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-02 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
+            
+          </div>
+        <span class="more-meta"> 约 704 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+      </div>
+    </header>
 
     
-      <section id="archive" class="archive">
-        <div class="archive-title">
-        </div>
-          <div class="collection-title">
-            <h2 class="archive-year">
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">
-                分类： 编程笔记
-              </a>
-            </h2>
-          </div><div class="archive-post">
-              <span class="archive-post-time">
-                2018-04-02
-              </span>
-              <span class="archive-post-title">
-                <a href="/post/stl-allocator/" class="archive-post-link">
-                  一、STL产生的缘由
-                </a>
-              </span>
-            </div></section>
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-stl产生的缘由">一、STL产生的缘由</a></li>
+<li><a href="#二-stl的基本架构">二、STL的基本架构</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
 
+    
+    <div class="post-content">
+      
+
+<h2 id="一-stl产生的缘由">一、STL产生的缘由</h2>
+
+<p>  人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可以借鉴的地方。所以必要时，不是另起轮子，而是站在巨人的肩膀上是很重要的。<br />
+  程序员也是这样一群人，大家都开始时，自己做自己的事情，可是大家最后发现，天哪，每个人都在重复好多工作，同样一个排序写成千上万遍，同样一个数据结构写成千上万变，这时候，大家就觉得心好累，一个人说，哈哈，让我们用共同的智商来写一个模板一样大家都可以用上的东西，社区们都动作起来，这样就有了STL，大家就可以用前面伟大的程序员写的“轮子”了，每个人都只用关系自己的具体功能了，而不用再关心数据怎么储存之类的鸡毛小事了，总不能，我写个hello，world还要写机器驱动吧，当然还有boost库，很多智慧的结晶。</p>
+
+<h2 id="二-stl的基本架构">二、STL的基本架构</h2>
+
+<p>  STL六大组件：容器、算法、迭代器、配接器、空间配置器、仿函数<br />
+<strong>容器</strong>：是各种数据结构，vector、list、deque、set、map等，用来放数据，毕竟程序运行的基础是数据。<br />
+<strong>算法</strong>：对于容器的数据进行操作，进行排序、搜索、复制、删除等各种操作。<br />
+<strong>迭代器</strong>：等于说是容器和算法之间的胶合剂，说的通俗一点，容器并不想要其它东西直接看见自己的数据、所以它做了一个东西也就是迭代器;让迭代器来访问自己的数据，交接口给算法。就和古代的皇上并不是谁都能见，也不安全，所以都会有一个太监来传送消息一样。<br />
+<strong>仿函数</strong>：像函数一样、可算作算法的某种策略、经常用重载类模板实现。<br />
+<strong>配接器</strong>：用来修饰容器、仿函数、或者迭代器、像queue底部其实由deque实现，其实只算是一种修饰过的容器，也就是配接器而已。改变函数或者迭代器接口也算作修饰而已。<br />
+<strong>配置器</strong>：负责容器空间的配置与释放
+<img src="https://chengsanban.github.io/image/stl-reason-all.png" alt="关系图" /></p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">橙三瓣</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-04-02</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+          
+          <a href="/tags/c/">C</a>
+          
+          <a href="/tags/stl/">STL</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+    
+
+  
+
+  
+
+  
+  </article>
         </div>
       </div>
     </main>
