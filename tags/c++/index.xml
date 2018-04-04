@@ -7,17 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>橙三瓣</copyright>
-    <lastBuildDate>Mon, 02 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://chengsanban.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>一、STL产生的缘由</title>
+      <title>二、STL空间配置器</title>
       <link>https://chengsanban.github.io/post/stl-allocator/</link>
-      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://chengsanban.github.io/post/stl-allocator/</guid>
+      <description>一、什么是空间配置器 空间配置器是STL用来为容器分配空间的组件。 二、本文的一点注意事项 本文解析空间配置器事宜SGI的STL为蓝本的，其中通过</description>
+    </item>
+    
+    <item>
+      <title>一、STL产生的缘由</title>
+      <link>https://chengsanban.github.io/post/stl-summary/</link>
+      <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-summary/</guid>
       <description>一、STL产生的缘由 人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可</description>
     </item>
     
