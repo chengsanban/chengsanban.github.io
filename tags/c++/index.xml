@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>橙三瓣</copyright>
-    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://chengsanban.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>STL解析(3):迭代器和类型萃取技术</title>
+      <link>https://chengsanban.github.io/post/stl-iterator/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-iterator/</guid>
+      <description>一、迭代器简介 迭代器的实现意义就是让外界不知道容器的具体实现的情况之下，还能遍历容器，做到最好的封装。在算法和容器之间，迭代器扮演者桥梁的角</description>
+    </item>
     
     <item>
       <title>二、STL空间配置器</title>

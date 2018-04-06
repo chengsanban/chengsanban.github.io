@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://chengsanban.github.io/post/stl-iterator/</loc>
+    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://chengsanban.github.io/post/stl-allocator/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -25,14 +32,14 @@
   
   <url>
     <loc>https://chengsanban.github.io/tags/c/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chengsanban.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -45,21 +52,21 @@
   
   <url>
     <loc>https://chengsanban.github.io/post/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chengsanban.github.io/tags/stl/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chengsanban.github.io/tags/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -73,7 +80,7 @@
   
   <url>
     <loc>https://chengsanban.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2018-04-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
