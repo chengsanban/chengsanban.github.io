@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-04-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-04-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2096">
+<meta itemprop="wordCount" content="2092">
 
 
 
@@ -173,7 +173,7 @@
               <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 2096 字 </span>
+        <span class="more-meta"> 约 2092 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
       </div>
     </header>
@@ -190,6 +190,7 @@
 <ul>
 <li><a href="#一-迭代器简介">一、迭代器简介</a></li>
 <li><a href="#二-迭代器的简单原理">二、迭代器的简单原理</a></li>
+<li><a href="#三-萃取编程方法">三、萃取编程方法</a></li>
 <li><a href="#四-迭代器相应型别类型">四、迭代器相应型别类型</a></li>
 </ul></li>
 </ul>
@@ -267,12 +268,15 @@ int main()
     { cout &lt;&lt; *t1 &lt;&lt; &quot; &quot;; } 
     return 0;
 }
-``
-从上面简单实现的代码中可以看出，在每个容器的类里用方法把直接的内部变量输出为迭代器，让迭代器去操作，所有的迭代器外部接口都是一样，可是每个容器的迭代器对自己容器的操作却不同，比如list在++操作时，执行x=x-&gt;next这种操作，而vector却因为是原生指针，直接++即可，这样只能实现者知道容器的内容，而且针对不同的容器有各自操作提高效率。
-## 三、萃取编程方法
-看似很简单是吧，看起来也是，问题来了，我传入了一个T模板类型，我想返回他的valueType类型怎么办，简单来说如果我传入一个自定义的类型想返回他的值类型怎么办，好像没办法，但c++利用声明内嵌类型的方法做到了，先看看代码，稍后讲解
-```c++
-#include&lt;iostream&gt;
+</code></pre>
+
+<p>从上面简单实现的代码中可以看出，在每个容器的类里用方法把直接的内部变量输出为迭代器，让迭代器去操作，所有的迭代器外部接口都是一样，可是每个容器的迭代器对自己容器的操作却不同，比如list在++操作时，执行x=x-&gt;next这种操作，而vector却因为是原生指针，直接++即可，这样只能实现者知道容器的内容，而且针对不同的容器有各自操作提高效率。</p>
+
+<h2 id="三-萃取编程方法">三、萃取编程方法</h2>
+
+<p>看似很简单是吧，看起来也是，问题来了，我传入了一个T模板类型，我想返回他的valueType类型怎么办，简单来说如果我传入一个自定义的类型想返回他的值类型怎么办，好像没办法，但c++利用声明内嵌类型的方法做到了，先看看代码，稍后讲解</p>
+
+<pre><code class="language-c++">#include&lt;iostream&gt;
 using namespace std;
 template&lt;class T&gt;
 class A
@@ -382,8 +386,11 @@ struct BidirectionalIteratorTag : public ForwardIteratorTag {};
 struct RandomAccessIteratorTag : public BidirectionalIteratorTag {};
 </code></pre>
 
-<p>  设计类别当然是有原因的，当一个类接收InputIterator时，它肯定也能接受BidirectionalIterator，当有一个函数要将迭代器前移几步BidirectionalIterator直接+n就行，而InputIterator却要一步一步的走，所以说选择好一个迭代器类型是很重要的，他决定了这个迭代器的效率。
-&gt; 图文来自博主原来博客chengvincent.com</p>
+<p>  设计类别当然是有原因的，当一个类接收InputIterator时，它肯定也能接受BidirectionalIterator，当有一个函数要将迭代器前移几步BidirectionalIterator直接+n就行，而InputIterator却要一步一步的走，所以说选择好一个迭代器类型是很重要的，他决定了这个迭代器的效率。</p>
+
+<blockquote>
+<p>图文来自博主原来博客chengvincent.com</p>
+</blockquote>
 
     </div>
 
@@ -424,7 +431,7 @@ struct RandomAccessIteratorTag : public BidirectionalIteratorTag {};
         
         
           <a class="next" href="/post/stl-allocator/">
-            <span class="next-text nav-default">二、STL空间配置器</span>
+            <span class="next-text nav-default">STL解析(2):STL空间配置器</span>
             <span class="prev-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

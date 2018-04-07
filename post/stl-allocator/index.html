@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>二、STL空间配置器 - 橙三瓣博客</title>
+  <title>STL解析(2):STL空间配置器 - 橙三瓣博客</title>
   <link rel="alternate" hreflang="zh-cn" href="https://chengsanban.github.io" />
 
 <meta name="renderer" content="webkit" />
@@ -49,7 +49,7 @@
 
 
 
-<meta property="og:title" content="二、STL空间配置器" />
+<meta property="og:title" content="STL解析(2):STL空间配置器" />
 <meta property="og:description" content="一、什么是空间配置器 空间配置器是STL用来为容器分配空间的组件。 二、本文的一点注意事项 本文解析空间配置器事宜SGI的STL为蓝本的，其中通过" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chengsanban.github.io/post/stl-allocator/" />
@@ -70,19 +70,19 @@
 
 
 
-<meta itemprop="name" content="二、STL空间配置器">
+<meta itemprop="name" content="STL解析(2):STL空间配置器">
 <meta itemprop="description" content="一、什么是空间配置器 空间配置器是STL用来为容器分配空间的组件。 二、本文的一点注意事项 本文解析空间配置器事宜SGI的STL为蓝本的，其中通过">
 
 
 <meta itemprop="datePublished" content="2018-04-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-04-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="5084">
+<meta itemprop="wordCount" content="5111">
 
 
 
 <meta itemprop="keywords" content="C&#43;&#43;,C,STL," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="二、STL空间配置器"/>
+<meta name="twitter:title" content="STL解析(2):STL空间配置器"/>
 <meta name="twitter:description" content="一、什么是空间配置器 空间配置器是STL用来为容器分配空间的组件。 二、本文的一点注意事项 本文解析空间配置器事宜SGI的STL为蓝本的，其中通过"/>
 
 <!--[if lte IE 9]>
@@ -164,7 +164,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">二、STL空间配置器</h1>
+      <h1 class="post-title">STL解析(2):STL空间配置器</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-04-03 </span>
@@ -173,7 +173,7 @@
               <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 5084 字 </span>
+        <span class="more-meta"> 约 5111 字 </span>
         <span class="more-meta"> 预计阅读 11 分钟 </span>
       </div>
     </header>
@@ -198,10 +198,10 @@
 <ul>
 <li><a href="#一级分配器介绍">一级分配器介绍</a></li>
 <li><a href="#二级空间配置器介绍">二级空间配置器介绍</a></li>
+</ul></li>
 <li><a href="#4-uninitialized-h解析">4、uninitialized.h解析</a></li>
 </ul></li>
 <li><a href="#四-小结">四、小结</a></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -657,7 +657,7 @@ __default_alloc_template&lt;__threads, __inst&gt;::_S_chunk_alloc(size_t __size,
 }
 </code></pre>
 
-<h4 id="4-uninitialized-h解析">4、uninitialized.h解析</h4>
+<h3 id="4-uninitialized-h解析">4、uninitialized.h解析</h3>
 
 <p>这些函数用来，当实现一个容器的时候，分配完内存呢，在分配好的内存之上构造元素。成功的话构造出元素，失败什么都不做，析构掉原来构造的。<br />
 - 1、uninitialized_copy  这个函数参数依次是，输入端起始位置、输入端结束位置、输出端起始位置</p>
@@ -689,7 +689,7 @@ inline wchar_t*  uninitialized_copy(const wchar_t* __first, const wchar_t* __las
 </code></pre>
 
 <ul>
-<li>2，uninitialized_fill
+<li>2、uninitialized_fill
 这个函数参数依次是，输出端起始处，输出端结束处，<strong>x为初值
 ```c++
 //进入初始化之后先进入</strong>uninitialized_fill判断是否是POD(Plain Old Data)类型,
@@ -708,7 +708,7 @@ inline void __uninitialized_fill(_ForwardIter __first,  _ForwardIter __last, con
     <strong>uninitialized_fill_aux(</strong>first, __last, __x, _Is_POD());
 }</p>
 
-<pre><code>- 3，uninitialized_fill_n
+<pre><code>- 3、uninitialized_fill_n
 这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值
 ```c++
 //进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
@@ -729,9 +729,10 @@ inline _ForwardIter  __uninitialized_fill_n(_ForwardIter __first, _Size __n, con
 
 <p>当然就有人问了，这么的话，这些函数有什么区别呀！参数呀，各位。。。。。。。。。</p>
 
-<h3 id="四-小结">四、小结</h3>
+<h2 id="四-小结">四、小结</h2>
 
-<p>stl是C++程序的一份瑰宝，它代表了编程中最精妙的技法和最哲思的考虑，经常看大师的源码，就算不能增加智商也能潜移默化收到影响，希望大家最后技术越来越好，NO_BUG。</p>
+<p>stl是C++程序的一份瑰宝，它代表了编程中最精妙的技法和最哲思的考虑，经常看大师的源码，就算不能增加智商也能潜移默化收到影响，希望大家最后技术越来越好，NO_BUG。<br />
+&gt; 图文来自博主原来博客chengvincent.com</p>
 
     </div>
 
@@ -777,7 +778,7 @@ inline _ForwardIter  __uninitialized_fill_n(_ForwardIter __first, _Size __n, con
           </a>
         
           <a class="next" href="/post/stl-summary/">
-            <span class="next-text nav-default">一、STL产生的缘由</span>
+            <span class="next-text nav-default">STL解析(1):STL产生的缘由</span>
             <span class="prev-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
