@@ -329,11 +329,14 @@ inline void destroy(_ForwardIterator __first, _ForwardIterator __last)
 
 &lt;h3 id=&#34;3-主菜部分-stl的内存分配策略&#34;&gt;3、主菜部分，stl的内存分配策略&lt;/h3&gt;
 
-&lt;p&gt;由于原来薄薄封装底层函数的策略太低效，所以SGI衍化出了自己的内存分配策略，主要先是考虑一下几点
-- 1、向系统的堆索要空间
-- 2、内存不足的解决方法
-- 3、内存碎片问题
-- 4、多线程状态&lt;/p&gt;
+&lt;p&gt;由于原来薄薄封装底层函数的策略太低效，所以SGI衍化出了自己的内存分配策略，主要先是考虑一下几点&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1、向系统的堆索要空间&lt;/li&gt;
+&lt;li&gt;2、内存不足的解决方法&lt;/li&gt;
+&lt;li&gt;3、内存碎片问题&lt;/li&gt;
+&lt;li&gt;4、多线程状态&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;鉴于这种衍化，SGI形成了自己两层内存配置器的策略，一级和二级分配器。下来就谈一谈这两种配置器，这儿首先要谈一谈下面这个类，解释在代码注释中。,主要是把分配类型做进一步转化，并传递给深层的配置器处理。&lt;/p&gt;
 
@@ -453,15 +456,17 @@ typedef __malloc_alloc_template&amp;lt;0&amp;gt; malloc_alloc;
 
 &lt;h4 id=&#34;二级空间配置器介绍&#34;&gt;二级空间配置器介绍&lt;/h4&gt;
 
-&lt;p&gt;第二级配置器比较复杂&lt;br /&gt;
-- 1、维护16个自由链表，负责十六种小型区块的配置能力、内存池是由malloc而来，内存不足调用一级配置器配置请求内存。
-- 2、需求大于128byte的内存块就直接调用一级分配单元。&lt;/p&gt;
+&lt;p&gt;第二级配置器比较复杂&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;3、二级空间配置器，释放的时候，如果大于128byte就交给一级空间配置器释放，如果小于128byte就交给自由链表回收。
+&lt;li&gt;1、维护16个自由链表，负责十六种小型区块的配置能力、内存池是由malloc而来，内存不足调用一级配置器配置请求内存。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;2、需求大于128byte的内存块就直接调用一级分配单元。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;3、二级空间配置器，释放的时候，如果大于128byte就交给一级空间配置器释放，如果小于128byte就交给自由链表回收。
   由于要解决内存碎片问题，结果就会带来一些解决方法，自然会造成额外开销，分配的小块内存越少，浪费就显的越大，当小于128bytes，SGI就用内存池进行管理（memory pool），每次从内存池中拿到内存，制成自由链表，自由链表不但分配而且回收内存，当不用小块内存，自由链表就进行回收，为了方便SGI划定了自己的分配方式，以8递进，把128分为16个区间（8，16，24….128），每个区间都有对应的自由链表负责分配相应大小的内存块，所以自由链表一共有16个，当客户端申请内存时，链表会以8的倍数给予空间，所以这会造成内存内碎片问题，不过并没有两全之策（外碎片指因分配大块内存造成的空间和空间之间浪费，而内碎片指因为字节对齐而产生的浪费）
 内存碎片图解：
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-allocator/alloctor-debris.png&#34; alt=&#34;一级配置器&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-allocator/alloctor-debris.png&#34; alt=&#34;一级配置器&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;二级空间配置器默认名叫 __default_alloc_template，定义如下:&lt;/p&gt;
@@ -765,8 +770,11 @@ inline _ForwardIter  __uninitialized_fill_n(_ForwardIter __first, _Size __n, con
 
 &lt;h2 id=&#34;四-小结&#34;&gt;四、小结&lt;/h2&gt;
 
-&lt;p&gt;stl是C++程序的一份瑰宝，它代表了编程中最精妙的技法和最哲思的考虑，经常看大师的源码，就算不能增加智商也能潜移默化收到影响，希望大家最后技术越来越好，NO_BUG。&lt;br /&gt;
-&amp;gt; 图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;p&gt;stl是C++程序的一份瑰宝，它代表了编程中最精妙的技法和最哲思的考虑，经常看大师的源码，就算不能增加智商也能潜移默化收到影响，希望大家最后技术越来越好，NO_BUG。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
       
     </item>
