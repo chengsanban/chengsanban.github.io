@@ -36,6 +36,411 @@
     </item>
     
     <item>
+      <title>STL解析(4):STL序列式容器</title>
+      <link>https://chengsanban.github.io/post/stl-container1/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-container1/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-容器的分类&#34;&gt;一、容器的分类&lt;/h2&gt;
+
+&lt;p&gt;序列式容器：元素可以有序，但不一定有序的容器&lt;br /&gt;
+关联式容器：元素内有自己的对应关系，例如set的key-value对&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-allContainer.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;二-各种容器简述&#34;&gt;二、各种容器简述&lt;/h2&gt;
+
+&lt;h3 id=&#34;vector&#34;&gt;vector&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;申请的一段内存空间，利用start，finish(目前使用的空间尾)，end_of_storage(申请空间的尾)&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-vector.png&#34; alt=&#34;vector&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;容器特点&#34;&gt;容器特点&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;类似于array数组的容器。支持随机读取。连续空间&lt;/li&gt;
+&lt;li&gt;有自动增容部分，相比于数组，更加便捷&lt;/li&gt;
+&lt;li&gt;两倍增容方式，使用realloc增容，要是空间后有空间最好，直接申请增容就好，要是没有空间，就要另外开辟，然后数据复制过去，释放原空间，返回现有空间。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法介绍&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-vectorFunction.png&#34; alt=&#34;vector函数&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;list&#34;&gt;list&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构-1&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;双向循环链表&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-list.png&#34; alt=&#34;list&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;容器特点-1&#34;&gt;容器特点：&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;更加节省空间，对空间把握精确&lt;/li&gt;
+&lt;li&gt;不支持随机读取，&lt;/li&gt;
+&lt;li&gt;双向循环方式可以使得一个指针便能遍历链表，方便快捷&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法介绍&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-listFunction.png&#34; alt=&#34;list函数&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;deque&#34;&gt;deque&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构-2&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;双端队列，支持从两边插入，删除&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-deque.png&#34; alt=&#34;deque&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;容器特点-2&#34;&gt;容器特点：&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;假连续，看起来是一个首尾开放的vector其实不是。vector为了保持连续，当前空间尾不支持继续添加元素时，也不能增容时，会令外开辟空间，如上面图,但是deque并不会出现这种情况，因为它是假连续。看图&lt;/li&gt;
+&lt;li&gt;由于及假连续问题，所以容器结构比较复杂，执行效率比较低&lt;/li&gt;
+&lt;li&gt;系统维持一个map指针数组，指向各个分别的块，用复杂流程维系表面看起来像一个连续块&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法介绍&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-dequeFunction.png&#34; alt=&#34;deque函数&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;stack&#34;&gt;stack&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构-3&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;deque封闭一端即可&lt;/p&gt;
+
+&lt;h4 id=&#34;容器特点-3&#34;&gt;容器特点：&lt;/h4&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配接器，由于低层有现有容器简单封装（改其接口而使之成为另一种风貌，称之配接器）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;先进后出，所以并没有迭代器，不能遍历。有其他方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法介绍&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-stackFunction.png&#34; alt=&#34;stack函数&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;queue&#34;&gt;queue&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构-4&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;双端队列deque封闭一端入口，另一端出口&lt;/p&gt;
+
+&lt;h4 id=&#34;容器特点-4&#34;&gt;容器特点：&lt;/h4&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;配接器，由于低层有现有容器简单封装，（改其接口而使之成为另一种风貌，称之配接器）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;先进先出，所以并没有迭代器，不能遍历。有其他方法。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法介绍&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-queueFunction.png&#34; alt=&#34;queue函数&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;heap&#34;&gt;heap&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构-5&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;vector+heap（算法）所以在情理上来说他并不算是一个容器，是vector的算法表现&lt;/p&gt;
+
+&lt;h4 id=&#34;容器特点-5&#34;&gt;容器特点：&lt;/h4&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;堆的原理是通过堆算法使vector中的元素表述为一种完全二叉树的结构，类似于按层把树放在vector中。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;堆算法不仅可以让堆顶元素最小或最大，还能进行堆排序&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;堆的具体介绍详见这篇文章 点击跳转&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法介绍&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-heapFunction.png&#34; alt=&#34;heap函数&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;priority-queue&#34;&gt;priority_queue&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构-6&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;底部就是堆的封装&lt;/p&gt;
+
+&lt;h4 id=&#34;容器特点-6&#34;&gt;容器特点：&lt;/h4&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;由于堆有加入元素从最后加入，从堆顶出元素的特点，且堆顶元素必为最大或最小，并且底部是一个vector诸多便捷，所以正好做一个队列使用，队列事件的优先级权值做堆的节点，最大优先级的事件就会出现在堆顶。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;具体实现看堆&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;方法介绍&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-PqueueFunction.png&#34; alt=&#34;Pqueue函数&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;slist&#34;&gt;slist&lt;/h3&gt;
+
+&lt;h4 id=&#34;底层结构-7&#34;&gt;底层结构：&lt;/h4&gt;
+
+&lt;p&gt;双向链表，list是双向循环链表&lt;/p&gt;
+
+&lt;h4 id=&#34;容器特点-7&#34;&gt;容器特点：&lt;/h4&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;list迭代器是双向迭代器，而slist是前向迭代器，迭代器的具体介绍详见这篇文章 点击跳转&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>STL解析(5):STL关联式容器</title>
+      <link>https://chengsanban.github.io/post/stl-container2/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-container2/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-简说&#34;&gt;一、简说&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-allContainer.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;br /&gt;
+看到上面这幅图片、关联式容器有两大类，一类的底层使用红黑树、另一类是哈希桶、有什么区别，看图：
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-linkContainer.png&#34; alt=&#34;关联式容器区别&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;二-底层容器介绍&#34;&gt;二、底层容器介绍&lt;/h2&gt;
+
+&lt;p&gt;既然都看到底层结构，就直接讲讲底层结构的实现，然后再提一下各种容器的用法即可：&lt;/p&gt;
+
+&lt;h3 id=&#34;红黑树&#34;&gt;红黑树&lt;/h3&gt;
+
+&lt;p&gt;这里我来偷个懒，你们就到我的这篇文章上看看^-^  点这儿^-^&lt;/p&gt;
+
+&lt;h3 id=&#34;哈希桶&#34;&gt;哈希桶&lt;/h3&gt;
+
+&lt;p&gt;继续偷懒，你们就到我的这篇文章上看看^-^  点这儿^-^&lt;/p&gt;
+
+&lt;h2 id=&#34;三-容器的使用&#34;&gt;三、容器的使用&lt;/h2&gt;
+
+&lt;p&gt;map:&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-mapFunction.png&#34; alt=&#34;map函数&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;set:&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-setFunction.png&#34; alt=&#34;set函数&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其他类别mapXX和setXX的使用是一样的，但是在这里还是要解释一下这个value_comp函数，因为他是返回函数指针的，用法如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;set&amp;gt;
+using namespace std;
+int main()
+{ 
+    set&amp;lt;int&amp;gt; s1; 
+    s1.insert(1); 
+    s1.insert(45); 
+    s1.insert(9); 
+    s1.insert(11); 
+    set&amp;lt;int&amp;gt;::value_compare myComp; 
+    myComp = s1.value_comp(); 
+    set&amp;lt;int&amp;gt;::iterator iter1 = s1.find(45); 
+    set&amp;lt;int&amp;gt;::iterator iter2 = s1.find(9); 
+    cout &amp;lt;&amp;lt; myComp(*iter1, *iter2)&amp;lt;&amp;lt;endl; 
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>STL解析(6):STL算法</title>
+      <link>https://chengsanban.github.io/post/stl-algorithm/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-algorithm/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-算法是什么&#34;&gt;一、算法是什么&lt;/h2&gt;
+
+&lt;p&gt;简单来说，算法就是解决问题的方法，那么算法就很多了，好多事件都算算法，但今天说的是STL里面那些广为人知的算法，算法是在是太多了，建议大家要了解就去，看看算法源码，了解一下大师的思想，本篇文章只是介绍一下用法和注意事项，并不探讨实现。&lt;/p&gt;
+
+&lt;h2 id=&#34;二-算法的评判标准&#34;&gt;二、算法的评判标准&lt;/h2&gt;
+
+&lt;p&gt;空间复杂度+时间复杂度+大O表示法&lt;br /&gt;
+当一个算法要循环n次才能计算完毕，我们就说他O(n)的时间效率，当算法的构成要素很多，我们就取最大的参数，例如一个算法有两个循环，一个执行n^3循环，一个执行n次循环对于n^3来说就是微不足道，所以时间效率就是O(n^3)，当然还有其他的，例如二分查找就是O（log2^n），所以说算法时间效率某种程度等价于计算元素，与计算次数之间的函数关系 ，当然我们要注意一点，在整体幂都为1的情况之下，每个部分都会很大影响结果，所以就不能单纯取最大来算，例如两个n次循环组成算法应该是O(2n)而不是O(n)，还有就是某些查找算法可能每次查找效率不一样，时间复杂度就按最差计算空间复杂度就是占用空间多少，也以大O来计算。&lt;/p&gt;
+
+&lt;h2 id=&#34;三-stl算法&#34;&gt;三、STL算法&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-算法名称表示&#34;&gt;1、算法名称表示&lt;/h3&gt;
+
+&lt;p&gt;当STL算法名后带有_if后缀，说明这个算法要传入用户自定义的仿函数（请在博客中查找仿函数内容），例如sort_if,就是让你传入自己的比较仿函数来对比。&lt;br /&gt;
+当STL算法之后带有_copy后缀，说明此算法不会改变传入对象，而是copy一个对象，把执行操作之后的copy对象返回。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-所有算法例举&#34;&gt;2、所有算法例举&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func1.png&#34; alt=&#34;容器总览&#34; /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func2.png&#34; alt=&#34;容器总览&#34; /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func3.png&#34; alt=&#34;容器总览&#34; /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func4.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;br /&gt;
+&amp;gt; 图文来自博主原来博客chengvincent.com&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>STL解析(7):STL仿函数</title>
+      <link>https://chengsanban.github.io/post/stl-func/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-func/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-仿函数概念&#34;&gt;一、仿函数概念&lt;/h2&gt;
+
+&lt;p&gt;仿函数又称函数对象，虽然是类，但是在调用的时候，却可以像函数一样的被调用，作用在哪里？这个东西，在STL算法之中仿函数可以像模板参数一样被传递，STL算法有一部分由两种实现方式，一种是自定义方式，例如sort可以按照大小排序，另一种实现方式留给用户，用户可以定义自己的仿函数，传入算法模板参数。&lt;br /&gt;
+问题来了，定义个函数直接传入函数指针就行，何必呢！函数指针的方式一个是不符合抽象，另一个就是融入不了STL家族，打破STL作风。。。。&lt;/p&gt;
+
+&lt;h2 id=&#34;二-融入stl&#34;&gt;二、融入STL&lt;/h2&gt;
+
+&lt;p&gt;要像一个STL组件，就要相应的型别（迭代器一文查看概念），不然当某个组件使用仿函数就会使用出错，每次写的话，不得好麻烦，好在STL提供了两类来提供继承，分别是一元仿函数，和二元仿函数，先说说一元仿函数，先看定义：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;class _Arg, class _Result&amp;gt;
+struct unary_function 
+{ 
+    typedef _Arg argument_type; 
+    typedef _Result result_type;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一看就看的出来，一元就指的是一个参数一个结果，下来再看看二元的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;class _Arg1, class _Arg2, class _Result&amp;gt;
+struct binary_function 
+{ 
+    typedef _Arg1 first_argument_type; 
+    typedef _Arg2 second_argument_type; 
+    typedef _Result result_type;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一看就是针对于两个参数的操作符，使用时像下面这样正常继承就可：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;class _Tp&amp;gt;
+struct plus : public binary_function&amp;lt;_Tp,_Tp,_Tp&amp;gt; 
+{ 
+    _Tp operator()(const _Tp&amp;amp; __x, const _Tp&amp;amp; __y) const 
+    { return __x + __y; }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;三-仿函数的使用&#34;&gt;三、仿函数的使用&lt;/h2&gt;
+
+&lt;p&gt;下面代码实现两个仿函数，一个是找出较大数，一个是找较小数，并且有两种操作方式:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include&amp;lt;iostream&amp;gt;
+using namespace std;
+
+template&amp;lt;class T&amp;gt;
+struct Big
+{ 
+    T operator()(const T&amp;amp; t1,const T&amp;amp; t2) 
+    { if (t1 &amp;gt; t2) return t1; return t2; }
+};
+
+template&amp;lt;class T&amp;gt;
+struct Small
+{ 
+    T operator()(const T&amp;amp; t1, const T&amp;amp; t2)const { if (t1 &amp;lt; t2) return t1; 
+    return t2; }
+};
+
+int main()
+{ 
+    //使用类名加括号构建匿名对象 
+    cout &amp;lt;&amp;lt; Big&amp;lt;int&amp;gt;()(1,2)&amp;lt;&amp;lt; endl; 
+    cout &amp;lt;&amp;lt; Small&amp;lt;int&amp;gt;()(1,2) &amp;lt;&amp;lt; endl; 
+    //直接构造对象 Big&amp;lt;int&amp;gt; b1; 
+    Small&amp;lt;int&amp;gt; s1; 
+    cout &amp;lt;&amp;lt; s1(1, 2) &amp;lt;&amp;lt; endl; 
+    cout &amp;lt;&amp;lt; b1(1, 2) &amp;lt;&amp;lt; endl; 
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;but,都说了主要是个STL算法用的，所以至该举个例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;sort(iv.begain(), iv.end,greater&amp;lt;int&amp;gt;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这一段就是给排序算法传入了一个两个值之间找到达的比较仿函数。诺，这就是仿函数了。。。。，收工回家。&lt;br /&gt;
+&amp;gt; 图文来自博主原来博客chengvincent.com&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>STL解析(8):STL配接器</title>
+      <link>https://chengsanban.github.io/post/stl-adapter/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-adapter/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-配接器概念&#34;&gt;一、配接器概念&lt;/h2&gt;
+
+&lt;p&gt;配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相互协调工作的类工作。&lt;br /&gt;
+STL中改变容器接口的就叫容器适配器，改变迭代器接口的称之为迭代器适配器。&lt;/p&gt;
+
+&lt;h2 id=&#34;二-配接器的应用&#34;&gt;二、配接器的应用&lt;/h2&gt;
+
+&lt;h3 id=&#34;容器配接器&#34;&gt;容器配接器&lt;/h3&gt;
+
+&lt;p&gt;  就像先前在讲容器概念的时候讲到的，stack和queue为什么是适配器，因为他只是简单改变了底层容器deque的接口而已。&lt;/p&gt;
+
+&lt;h3 id=&#34;迭代器配接器&#34;&gt;迭代器配接器&lt;/h3&gt;
+
+&lt;p&gt;  像下面这种情况，原本的接口函数非常复杂back_insert_iterator&amp;lt;_Container&amp;gt;(__x)，也不宜用户理解，稍加封装把接口变为back_inserter(_Container&amp;amp; __x) ，就看起来简单不少，虽然只是改了个名称。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;inline back_insert_iterator&amp;lt;_Container&amp;gt;  
+back_inserter(_Container&amp;amp; __x) 
+{ return back_insert_iterator&amp;lt;_Container&amp;gt;(__x); }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然而你可以自己设计自己的适配器，让适配器根据你的意愿工作，例如你本来，是有一个输出迭代器，他的功能是输出到文本，你适当调整接口就可以让他输出到屏幕。&lt;/p&gt;
+
+&lt;h3 id=&#34;仿函数配接器&#34;&gt;仿函数配接器&lt;/h3&gt;
+
+&lt;p&gt;仿函数配接器可能是最有用的配接器类型，使用它组合各种方法和仿函数，配接之后再配接。&lt;br /&gt;
+&lt;strong&gt;举个栗子&lt;/strong&gt;：&lt;br /&gt;
+我有10个数，一个求最大值和一个求最小值仿函数，现在我要实现的功能是找出里面最大的数字和最小的数字相减。&lt;br /&gt;
+//求最大值仿函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template&amp;lt;class T&amp;gt;
+class Big{ ........} 
+//求最小值仿函数
+template&amp;lt;class T&amp;gt;class 
+Small{ ........} 
+//仿函数的仿函数 
+tempalte&amp;lt;class T1,class T2&amp;gt;
+class BigSubSmall&amp;lt;Big,Small&amp;gt;
+{
+     //调用两个仿函数返回值做差
+} 
+
+//配接器
+int BSS(int *a)
+{ 
+    //调用BigSubSmall仿函数计算传回结果
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>STL解析(3):迭代器和类型萃取技术</title>
       <link>https://chengsanban.github.io/post/stl-iterator/</link>
       <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>

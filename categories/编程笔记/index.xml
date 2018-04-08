@@ -7,10 +7,55 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>橙三瓣</copyright>
-    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://chengsanban.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>STL解析(4):STL序列式容器</title>
+      <link>https://chengsanban.github.io/post/stl-container1/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-container1/</guid>
+      <description>一、容器的分类 序列式容器：元素可以有序，但不一定有序的容器 关联式容器：元素内有自己的对应关系，例如set的key-value对 二、各种容器简</description>
+    </item>
+    
+    <item>
+      <title>STL解析(5):STL关联式容器</title>
+      <link>https://chengsanban.github.io/post/stl-container2/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-container2/</guid>
+      <description>一、简说 看到上面这幅图片、关联式容器有两大类，一类的底层使用红黑树、另一类是哈希桶、有什么区别，看图： 二、底层容器介绍 既然都看到底层结构，就</description>
+    </item>
+    
+    <item>
+      <title>STL解析(6):STL算法</title>
+      <link>https://chengsanban.github.io/post/stl-algorithm/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-algorithm/</guid>
+      <description>一、算法是什么 简单来说，算法就是解决问题的方法，那么算法就很多了，好多事件都算算法，但今天说的是STL里面那些广为人知的算法，算法是在是太多</description>
+    </item>
+    
+    <item>
+      <title>STL解析(7):STL仿函数</title>
+      <link>https://chengsanban.github.io/post/stl-func/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-func/</guid>
+      <description>一、仿函数概念 仿函数又称函数对象，虽然是类，但是在调用的时候，却可以像函数一样的被调用，作用在哪里？这个东西，在STL算法之中仿函数可以像模</description>
+    </item>
+    
+    <item>
+      <title>STL解析(8):STL配接器</title>
+      <link>https://chengsanban.github.io/post/stl-adapter/</link>
+      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-adapter/</guid>
+      <description>一、配接器概念 配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相</description>
+    </item>
     
     <item>
       <title>STL解析(3):迭代器和类型萃取技术</title>
