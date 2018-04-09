@@ -1,2 +1,0 @@
-User-agent: *
-Sitemap: https://chengsanban.github.io/sitemap.xml

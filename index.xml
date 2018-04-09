@@ -417,8 +417,8 @@ back_inserter(_Container&amp;amp; __x)
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template&amp;lt;class T&amp;gt;
 class Big{ ........} 
 //求最小值仿函数
-template&amp;lt;class T&amp;gt;class 
-Small{ ........} 
+template&amp;lt;class T&amp;gt;
+class Small{ ........} 
 //仿函数的仿函数 
 tempalte&amp;lt;class T1,class T2&amp;gt;
 class BigSubSmall&amp;lt;Big,Small&amp;gt;
