@@ -1,6 +1,6 @@
 ---
 author: "橙三瓣"
-date: 2018-04-07
+date: 2018-04-08
 title: "STL解析(5):STL关联式容器"
 tags: [
     "C++",
@@ -29,7 +29,7 @@ set:
 ![set函数](https://chengsanban.github.io/image/STL-container/STL-setFunction.png)    
 
 其他类别mapXX和setXX的使用是一样的，但是在这里还是要解释一下这个value_comp函数，因为他是返回函数指针的，用法如下  
-```c++
+```C++
 #include<iostream>
 #include<set>
 using namespace std;

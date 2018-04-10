@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-04-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-04-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2092">
+<meta itemprop="wordCount" content="2087">
 
 
 
@@ -173,7 +173,7 @@
               <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 2092 字 </span>
+        <span class="more-meta"> 约 2087 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
       </div>
     </header>
@@ -211,7 +211,7 @@
 
 <p>下面简单实现一个vector迭代器，重在看清其中原理</p>
 
-<pre><code class="language-c++">#include&lt;iostream&gt;
+<pre><code class="language-C++">#include&lt;iostream&gt;
 using namespace std;
 //简单的Vector迭代器
 template&lt;class T&gt;
@@ -276,7 +276,7 @@ int main()
 
 <p>看似很简单是吧，看起来也是，问题来了，我传入了一个T模板类型，我想返回他的valueType类型怎么办，简单来说如果我传入一个自定义的类型想返回他的值类型怎么办，好像没办法，但c++利用声明内嵌类型的方法做到了，先看看代码，稍后讲解</p>
 
-<pre><code class="language-c++">#include&lt;iostream&gt;
+<pre><code class="language-C++">#include&lt;iostream&gt;
 using namespace std;
 template&lt;class T&gt;
 class A
@@ -330,7 +330,7 @@ int main()
 
 <p>  那么问题又来了，上面萃取机中的T如果是普通指针类型不是自定义类型那么不久萃取不出来了，好像是这样，因为普通指针类型并不像上面的A类型即自定义类型有ValueType的内嵌声明。不过STL才不会这么笨，它提供了一种叫做特化的东东，看过我网站第一篇空间配置器的想必一定都知道了，要是不知道的，麻烦在我网站上搜一下偏特化，看一下，有了偏特化那么针对原生指针就可以这样。</p>
 
-<pre><code class="language-c++">//类型萃取机T*特化
+<pre><code class="language-C++">//类型萃取机T*特化
 template&lt;class T&gt;struct traits&lt;T*&gt;
 { 
     //自定义类型中声明内嵌类型 
@@ -358,7 +358,7 @@ struct traits&lt;const T*&gt;
 <p>上面我们为了简单只说了ValueType(值类型)、Pointer（值指针类型）、Reference(值引用类型)<br />
 上面说的几种还是很好理解，其实还有两种,一种就叫Difference这种类型就是记录两个迭代器之间距离，因此就可记录容量,最后一种叫iterator_categoty,见名知意，就是迭代器类型。</p>
 
-<pre><code class="language-c++">template &lt;class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&amp;&gt;
+<pre><code class="language-C++">template &lt;class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&amp;&gt;
 struct Iterator
 { 
     typedef Category IteratorCategory; // 迭代器类型
@@ -369,17 +369,20 @@ struct Iterator
 };
 </code></pre>
 
-<p>迭代器种类分为五种：<br />
-- InputIterator：只读类型迭代器
-- OutputIterator：只写类型迭代器
-- ForwardIterator：前向迭代器，只能单向移动，类似于单链表的迭代器
-- BidirectionalIterator：双向迭代器，双向移动，类似于双向链表迭代器
-- RandomAccessIterator：随机读写迭代器，可以进行随机读写，vector类型</p>
+<p>迭代器种类分为五种：</p>
+
+<ul>
+<li>InputIterator：只读类型迭代器</li>
+<li>OutputIterator：只写类型迭代器</li>
+<li>ForwardIterator：前向迭代器，只能单向移动，类似于单链表的迭代器</li>
+<li>BidirectionalIterator：双向迭代器，双向移动，类似于双向链表迭代器</li>
+<li>RandomAccessIterator：随机读写迭代器，可以进行随机读写，vector类型<br /></li>
+</ul>
 
 <p>他们有相互之间的继承关系，如下代码，想必不用说知道为什么这样继承，能双向移动必定能单向移动，以此类推。
 <img src="https://chengsanban.github.io/image/STL-iterator/iterator.png" alt="迭代器" /></p>
 
-<pre><code class="language-c++">struct InputIteratorTag {};//只读
+<pre><code class="language-C++">struct InputIteratorTag {};//只读
 struct OutputIteratorTag {};//只写
 struct ForwardIteratorTag : public InputIteratorTag {};
 struct BidirectionalIteratorTag : public ForwardIteratorTag {};
@@ -429,9 +432,9 @@ struct RandomAccessIteratorTag : public BidirectionalIteratorTag {};
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/stl-adapter/">
+          <a class="prev" href="/post/stl-container1/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">STL解析(8):STL配接器</span>
+            <span class="prev-text nav-default">STL解析(4):STL序列式容器</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         

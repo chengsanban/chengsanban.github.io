@@ -36,6 +36,200 @@
     </item>
     
     <item>
+      <title>STL解析(7):STL仿函数</title>
+      <link>https://chengsanban.github.io/post/stl-func/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-func/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-仿函数概念&#34;&gt;一、仿函数概念&lt;/h2&gt;
+
+&lt;p&gt;仿函数又称函数对象，虽然是类，但是在调用的时候，却可以像函数一样的被调用，作用在哪里？这个东西，在STL算法之中仿函数可以像模板参数一样被传递，STL算法有一部分由两种实现方式，一种是自定义方式，例如sort可以按照大小排序，另一种实现方式留给用户，用户可以定义自己的仿函数，传入算法模板参数。&lt;br /&gt;
+问题来了，定义个函数直接传入函数指针就行，何必呢！函数指针的方式一个是不符合抽象，另一个就是融入不了STL家族，打破STL作风。。。。&lt;/p&gt;
+
+&lt;h2 id=&#34;二-融入stl&#34;&gt;二、融入STL&lt;/h2&gt;
+
+&lt;p&gt;要像一个STL组件，就要相应的型别（迭代器一文查看概念），不然当某个组件使用仿函数就会使用出错，每次写的话，不得好麻烦，好在STL提供了两类来提供继承，分别是一元仿函数，和二元仿函数，先说说一元仿函数，先看定义：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;template &amp;lt;class _Arg, class _Result&amp;gt;
+struct unary_function 
+{ 
+    typedef _Arg argument_type; 
+    typedef _Result result_type;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一看就看的出来，一元就指的是一个参数一个结果，下来再看看二元的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;template &amp;lt;class _Arg1, class _Arg2, class _Result&amp;gt;
+struct binary_function 
+{ 
+    typedef _Arg1 first_argument_type; 
+    typedef _Arg2 second_argument_type; 
+    typedef _Result result_type;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一看就是针对于两个参数的操作符，使用时像下面这样正常继承就可：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;template &amp;lt;class _Tp&amp;gt;
+struct plus : public binary_function&amp;lt;_Tp,_Tp,_Tp&amp;gt; 
+{ 
+    _Tp operator()(const _Tp&amp;amp; __x, const _Tp&amp;amp; __y) const 
+    { return __x + __y; }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;三-仿函数的使用&#34;&gt;三、仿函数的使用&lt;/h2&gt;
+
+&lt;p&gt;下面代码实现两个仿函数，一个是找出较大数，一个是找较小数，并且有两种操作方式:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;#include&amp;lt;iostream&amp;gt;
+using namespace std;
+
+template&amp;lt;class T&amp;gt;
+struct Big
+{ 
+    T operator()(const T&amp;amp; t1,const T&amp;amp; t2) 
+    { if (t1 &amp;gt; t2) return t1; return t2; }
+};
+
+template&amp;lt;class T&amp;gt;
+struct Small
+{ 
+    T operator()(const T&amp;amp; t1, const T&amp;amp; t2)const { if (t1 &amp;lt; t2) return t1; 
+    return t2; }
+};
+
+int main()
+{ 
+    //使用类名加括号构建匿名对象 
+    cout &amp;lt;&amp;lt; Big&amp;lt;int&amp;gt;()(1,2)&amp;lt;&amp;lt; endl; 
+    cout &amp;lt;&amp;lt; Small&amp;lt;int&amp;gt;()(1,2) &amp;lt;&amp;lt; endl; 
+    //直接构造对象 Big&amp;lt;int&amp;gt; b1; 
+    Small&amp;lt;int&amp;gt; s1; 
+    cout &amp;lt;&amp;lt; s1(1, 2) &amp;lt;&amp;lt; endl; 
+    cout &amp;lt;&amp;lt; b1(1, 2) &amp;lt;&amp;lt; endl; 
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;but,都说了主要是个STL算法用的，所以至该举个例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;sort(iv.begain(), iv.end,greater&amp;lt;int&amp;gt;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这一段就是给排序算法传入了一个两个值之间找到达的比较仿函数。诺，这就是仿函数了。。。。，收工回家。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>STL解析(6):STL算法</title>
+      <link>https://chengsanban.github.io/post/stl-algorithm/</link>
+      <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-algorithm/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-算法是什么&#34;&gt;一、算法是什么&lt;/h2&gt;
+
+&lt;p&gt;简单来说，算法就是解决问题的方法，那么算法就很多了，好多事件都算算法，但今天说的是STL里面那些广为人知的算法，算法是在是太多了，建议大家要了解就去，看看算法源码，了解一下大师的思想，本篇文章只是介绍一下用法和注意事项，并不探讨实现。&lt;/p&gt;
+
+&lt;h2 id=&#34;二-算法的评判标准&#34;&gt;二、算法的评判标准&lt;/h2&gt;
+
+&lt;p&gt;空间复杂度+时间复杂度+大O表示法&lt;br /&gt;
+当一个算法要循环n次才能计算完毕，我们就说他O(n)的时间效率，当算法的构成要素很多，我们就取最大的参数，例如一个算法有两个循环，一个执行n^3循环，一个执行n次循环对于n^3来说就是微不足道，所以时间效率就是O(n^3)，当然还有其他的，例如二分查找就是O（log2^n），所以说算法时间效率某种程度等价于计算元素，与计算次数之间的函数关系 ，当然我们要注意一点，在整体幂都为1的情况之下，每个部分都会很大影响结果，所以就不能单纯取最大来算，例如两个n次循环组成算法应该是O(2n)而不是O(n)，还有就是某些查找算法可能每次查找效率不一样，时间复杂度就按最差计算空间复杂度就是占用空间多少，也以大O来计算。&lt;/p&gt;
+
+&lt;h2 id=&#34;三-stl算法&#34;&gt;三、STL算法&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-算法名称表示&#34;&gt;1、算法名称表示&lt;/h3&gt;
+
+&lt;p&gt;当STL算法名后带有_if后缀，说明这个算法要传入用户自定义的仿函数（请在博客中查找仿函数内容），例如sort_if,就是让你传入自己的比较仿函数来对比。&lt;br /&gt;
+当STL算法之后带有_copy后缀，说明此算法不会改变传入对象，而是copy一个对象，把执行操作之后的copy对象返回。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-所有算法例举&#34;&gt;2、所有算法例举&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func1.png&#34; alt=&#34;容器总览&#34; /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func2.png&#34; alt=&#34;容器总览&#34; /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func3.png&#34; alt=&#34;容器总览&#34; /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func4.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;br /&gt;
+&amp;gt; 图文来自博主原来博客chengvincent.com&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>STL解析(5):STL关联式容器</title>
+      <link>https://chengsanban.github.io/post/stl-container2/</link>
+      <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-container2/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;一-简说&#34;&gt;一、简说&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-allContainer.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;br /&gt;
+看到上面这幅图片、关联式容器有两大类，一类的底层使用红黑树、另一类是哈希桶、有什么区别，看图：
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-linkContainer.png&#34; alt=&#34;关联式容器区别&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;二-底层容器介绍&#34;&gt;二、底层容器介绍&lt;/h2&gt;
+
+&lt;p&gt;既然都看到底层结构，就直接讲讲底层结构的实现，然后再提一下各种容器的用法即可：&lt;/p&gt;
+
+&lt;h3 id=&#34;红黑树&#34;&gt;红黑树&lt;/h3&gt;
+
+&lt;p&gt;这里我来偷个懒，你们就到我的这篇文章上看看^-^  点这儿^-^&lt;/p&gt;
+
+&lt;h3 id=&#34;哈希桶&#34;&gt;哈希桶&lt;/h3&gt;
+
+&lt;p&gt;继续偷懒，你们就到我的这篇文章上看看^-^  点这儿^-^&lt;/p&gt;
+
+&lt;h2 id=&#34;三-容器的使用&#34;&gt;三、容器的使用&lt;/h2&gt;
+
+&lt;p&gt;map:&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-mapFunction.png&#34; alt=&#34;map函数&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;set:&lt;br /&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-setFunction.png&#34; alt=&#34;set函数&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其他类别mapXX和setXX的使用是一样的，但是在这里还是要解释一下这个value_comp函数，因为他是返回函数指针的，用法如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;set&amp;gt;
+using namespace std;
+int main()
+{ 
+    set&amp;lt;int&amp;gt; s1; 
+    s1.insert(1); 
+    s1.insert(45); 
+    s1.insert(9); 
+    s1.insert(11); 
+    set&amp;lt;int&amp;gt;::value_compare myComp; 
+    myComp = s1.value_comp(); 
+    set&amp;lt;int&amp;gt;::iterator iter1 = s1.find(45); 
+    set&amp;lt;int&amp;gt;::iterator iter2 = s1.find(9); 
+    cout &amp;lt;&amp;lt; myComp(*iter1, *iter2)&amp;lt;&amp;lt;endl; 
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>STL解析(4):STL序列式容器</title>
       <link>https://chengsanban.github.io/post/stl-container1/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
@@ -186,261 +380,6 @@
     </item>
     
     <item>
-      <title>STL解析(5):STL关联式容器</title>
-      <link>https://chengsanban.github.io/post/stl-container2/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://chengsanban.github.io/post/stl-container2/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;一-简说&#34;&gt;一、简说&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-allContainer.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;br /&gt;
-看到上面这幅图片、关联式容器有两大类，一类的底层使用红黑树、另一类是哈希桶、有什么区别，看图：
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-linkContainer.png&#34; alt=&#34;关联式容器区别&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;二-底层容器介绍&#34;&gt;二、底层容器介绍&lt;/h2&gt;
-
-&lt;p&gt;既然都看到底层结构，就直接讲讲底层结构的实现，然后再提一下各种容器的用法即可：&lt;/p&gt;
-
-&lt;h3 id=&#34;红黑树&#34;&gt;红黑树&lt;/h3&gt;
-
-&lt;p&gt;这里我来偷个懒，你们就到我的这篇文章上看看^-^  点这儿^-^&lt;/p&gt;
-
-&lt;h3 id=&#34;哈希桶&#34;&gt;哈希桶&lt;/h3&gt;
-
-&lt;p&gt;继续偷懒，你们就到我的这篇文章上看看^-^  点这儿^-^&lt;/p&gt;
-
-&lt;h2 id=&#34;三-容器的使用&#34;&gt;三、容器的使用&lt;/h2&gt;
-
-&lt;p&gt;map:&lt;br /&gt;
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-mapFunction.png&#34; alt=&#34;map函数&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;set:&lt;br /&gt;
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-container/STL-setFunction.png&#34; alt=&#34;set函数&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;其他类别mapXX和setXX的使用是一样的，但是在这里还是要解释一下这个value_comp函数，因为他是返回函数指针的，用法如下&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include&amp;lt;iostream&amp;gt;
-#include&amp;lt;set&amp;gt;
-using namespace std;
-int main()
-{ 
-    set&amp;lt;int&amp;gt; s1; 
-    s1.insert(1); 
-    s1.insert(45); 
-    s1.insert(9); 
-    s1.insert(11); 
-    set&amp;lt;int&amp;gt;::value_compare myComp; 
-    myComp = s1.value_comp(); 
-    set&amp;lt;int&amp;gt;::iterator iter1 = s1.find(45); 
-    set&amp;lt;int&amp;gt;::iterator iter2 = s1.find(9); 
-    cout &amp;lt;&amp;lt; myComp(*iter1, *iter2)&amp;lt;&amp;lt;endl; 
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>STL解析(6):STL算法</title>
-      <link>https://chengsanban.github.io/post/stl-algorithm/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://chengsanban.github.io/post/stl-algorithm/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;一-算法是什么&#34;&gt;一、算法是什么&lt;/h2&gt;
-
-&lt;p&gt;简单来说，算法就是解决问题的方法，那么算法就很多了，好多事件都算算法，但今天说的是STL里面那些广为人知的算法，算法是在是太多了，建议大家要了解就去，看看算法源码，了解一下大师的思想，本篇文章只是介绍一下用法和注意事项，并不探讨实现。&lt;/p&gt;
-
-&lt;h2 id=&#34;二-算法的评判标准&#34;&gt;二、算法的评判标准&lt;/h2&gt;
-
-&lt;p&gt;空间复杂度+时间复杂度+大O表示法&lt;br /&gt;
-当一个算法要循环n次才能计算完毕，我们就说他O(n)的时间效率，当算法的构成要素很多，我们就取最大的参数，例如一个算法有两个循环，一个执行n^3循环，一个执行n次循环对于n^3来说就是微不足道，所以时间效率就是O(n^3)，当然还有其他的，例如二分查找就是O（log2^n），所以说算法时间效率某种程度等价于计算元素，与计算次数之间的函数关系 ，当然我们要注意一点，在整体幂都为1的情况之下，每个部分都会很大影响结果，所以就不能单纯取最大来算，例如两个n次循环组成算法应该是O(2n)而不是O(n)，还有就是某些查找算法可能每次查找效率不一样，时间复杂度就按最差计算空间复杂度就是占用空间多少，也以大O来计算。&lt;/p&gt;
-
-&lt;h2 id=&#34;三-stl算法&#34;&gt;三、STL算法&lt;/h2&gt;
-
-&lt;h3 id=&#34;1-算法名称表示&#34;&gt;1、算法名称表示&lt;/h3&gt;
-
-&lt;p&gt;当STL算法名后带有_if后缀，说明这个算法要传入用户自定义的仿函数（请在博客中查找仿函数内容），例如sort_if,就是让你传入自己的比较仿函数来对比。&lt;br /&gt;
-当STL算法之后带有_copy后缀，说明此算法不会改变传入对象，而是copy一个对象，把执行操作之后的copy对象返回。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-所有算法例举&#34;&gt;2、所有算法例举&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func1.png&#34; alt=&#34;容器总览&#34; /&gt;
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func2.png&#34; alt=&#34;容器总览&#34; /&gt;
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func3.png&#34; alt=&#34;容器总览&#34; /&gt;
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func4.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;br /&gt;
-&amp;gt; 图文来自博主原来博客chengvincent.com&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>STL解析(7):STL仿函数</title>
-      <link>https://chengsanban.github.io/post/stl-func/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://chengsanban.github.io/post/stl-func/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;一-仿函数概念&#34;&gt;一、仿函数概念&lt;/h2&gt;
-
-&lt;p&gt;仿函数又称函数对象，虽然是类，但是在调用的时候，却可以像函数一样的被调用，作用在哪里？这个东西，在STL算法之中仿函数可以像模板参数一样被传递，STL算法有一部分由两种实现方式，一种是自定义方式，例如sort可以按照大小排序，另一种实现方式留给用户，用户可以定义自己的仿函数，传入算法模板参数。&lt;br /&gt;
-问题来了，定义个函数直接传入函数指针就行，何必呢！函数指针的方式一个是不符合抽象，另一个就是融入不了STL家族，打破STL作风。。。。&lt;/p&gt;
-
-&lt;h2 id=&#34;二-融入stl&#34;&gt;二、融入STL&lt;/h2&gt;
-
-&lt;p&gt;要像一个STL组件，就要相应的型别（迭代器一文查看概念），不然当某个组件使用仿函数就会使用出错，每次写的话，不得好麻烦，好在STL提供了两类来提供继承，分别是一元仿函数，和二元仿函数，先说说一元仿函数，先看定义：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;class _Arg, class _Result&amp;gt;
-struct unary_function 
-{ 
-    typedef _Arg argument_type; 
-    typedef _Result result_type;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一看就看的出来，一元就指的是一个参数一个结果，下来再看看二元的：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;class _Arg1, class _Arg2, class _Result&amp;gt;
-struct binary_function 
-{ 
-    typedef _Arg1 first_argument_type; 
-    typedef _Arg2 second_argument_type; 
-    typedef _Result result_type;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一看就是针对于两个参数的操作符，使用时像下面这样正常继承就可：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;class _Tp&amp;gt;
-struct plus : public binary_function&amp;lt;_Tp,_Tp,_Tp&amp;gt; 
-{ 
-    _Tp operator()(const _Tp&amp;amp; __x, const _Tp&amp;amp; __y) const 
-    { return __x + __y; }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;三-仿函数的使用&#34;&gt;三、仿函数的使用&lt;/h2&gt;
-
-&lt;p&gt;下面代码实现两个仿函数，一个是找出较大数，一个是找较小数，并且有两种操作方式:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include&amp;lt;iostream&amp;gt;
-using namespace std;
-
-template&amp;lt;class T&amp;gt;
-struct Big
-{ 
-    T operator()(const T&amp;amp; t1,const T&amp;amp; t2) 
-    { if (t1 &amp;gt; t2) return t1; return t2; }
-};
-
-template&amp;lt;class T&amp;gt;
-struct Small
-{ 
-    T operator()(const T&amp;amp; t1, const T&amp;amp; t2)const { if (t1 &amp;lt; t2) return t1; 
-    return t2; }
-};
-
-int main()
-{ 
-    //使用类名加括号构建匿名对象 
-    cout &amp;lt;&amp;lt; Big&amp;lt;int&amp;gt;()(1,2)&amp;lt;&amp;lt; endl; 
-    cout &amp;lt;&amp;lt; Small&amp;lt;int&amp;gt;()(1,2) &amp;lt;&amp;lt; endl; 
-    //直接构造对象 Big&amp;lt;int&amp;gt; b1; 
-    Small&amp;lt;int&amp;gt; s1; 
-    cout &amp;lt;&amp;lt; s1(1, 2) &amp;lt;&amp;lt; endl; 
-    cout &amp;lt;&amp;lt; b1(1, 2) &amp;lt;&amp;lt; endl; 
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;but,都说了主要是个STL算法用的，所以至该举个例子&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;sort(iv.begain(), iv.end,greater&amp;lt;int&amp;gt;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这一段就是给排序算法传入了一个两个值之间找到达的比较仿函数。诺，这就是仿函数了。。。。，收工回家。&lt;br /&gt;
-&amp;gt; 图文来自博主原来博客chengvincent.com&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>STL解析(8):STL配接器</title>
-      <link>https://chengsanban.github.io/post/stl-adapter/</link>
-      <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://chengsanban.github.io/post/stl-adapter/</guid>
-      
-        <description>
-
-&lt;h2 id=&#34;一-配接器概念&#34;&gt;一、配接器概念&lt;/h2&gt;
-
-&lt;p&gt;配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相互协调工作的类工作。&lt;br /&gt;
-STL中改变容器接口的就叫容器适配器，改变迭代器接口的称之为迭代器适配器。&lt;/p&gt;
-
-&lt;h2 id=&#34;二-配接器的应用&#34;&gt;二、配接器的应用&lt;/h2&gt;
-
-&lt;h3 id=&#34;容器配接器&#34;&gt;容器配接器&lt;/h3&gt;
-
-&lt;p&gt;  就像先前在讲容器概念的时候讲到的，stack和queue为什么是适配器，因为他只是简单改变了底层容器deque的接口而已。&lt;/p&gt;
-
-&lt;h3 id=&#34;迭代器配接器&#34;&gt;迭代器配接器&lt;/h3&gt;
-
-&lt;p&gt;  像下面这种情况，原本的接口函数非常复杂back_insert_iterator&amp;lt;_Container&amp;gt;(__x)，也不宜用户理解，稍加封装把接口变为back_inserter(_Container&amp;amp; __x) ，就看起来简单不少，虽然只是改了个名称。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;inline back_insert_iterator&amp;lt;_Container&amp;gt;  
-back_inserter(_Container&amp;amp; __x) 
-{ return back_insert_iterator&amp;lt;_Container&amp;gt;(__x); }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;然而你可以自己设计自己的适配器，让适配器根据你的意愿工作，例如你本来，是有一个输出迭代器，他的功能是输出到文本，你适当调整接口就可以让他输出到屏幕。&lt;/p&gt;
-
-&lt;h3 id=&#34;仿函数配接器&#34;&gt;仿函数配接器&lt;/h3&gt;
-
-&lt;p&gt;仿函数配接器可能是最有用的配接器类型，使用它组合各种方法和仿函数，配接之后再配接。&lt;br /&gt;
-&lt;strong&gt;举个栗子&lt;/strong&gt;：&lt;br /&gt;
-我有10个数，一个求最大值和一个求最小值仿函数，现在我要实现的功能是找出里面最大的数字和最小的数字相减。&lt;br /&gt;
-//求最大值仿函数&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template&amp;lt;class T&amp;gt;
-class Big{ ........} 
-//求最小值仿函数
-template&amp;lt;class T&amp;gt;
-class Small{ ........} 
-//仿函数的仿函数 
-tempalte&amp;lt;class T1,class T2&amp;gt;
-class BigSubSmall&amp;lt;Big,Small&amp;gt;
-{
-     //调用两个仿函数返回值做差
-} 
-
-//配接器
-int BSS(int *a)
-{ 
-    //调用BigSubSmall仿函数计算传回结果
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-      
-    </item>
-    
-    <item>
       <title>STL解析(3):迭代器和类型萃取技术</title>
       <link>https://chengsanban.github.io/post/stl-iterator/</link>
       <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
@@ -458,7 +397,7 @@ int BSS(int *a)
 
 &lt;p&gt;下面简单实现一个vector迭代器，重在看清其中原理&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include&amp;lt;iostream&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;#include&amp;lt;iostream&amp;gt;
 using namespace std;
 //简单的Vector迭代器
 template&amp;lt;class T&amp;gt;
@@ -523,7 +462,7 @@ int main()
 
 &lt;p&gt;看似很简单是吧，看起来也是，问题来了，我传入了一个T模板类型，我想返回他的valueType类型怎么办，简单来说如果我传入一个自定义的类型想返回他的值类型怎么办，好像没办法，但c++利用声明内嵌类型的方法做到了，先看看代码，稍后讲解&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include&amp;lt;iostream&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;#include&amp;lt;iostream&amp;gt;
 using namespace std;
 template&amp;lt;class T&amp;gt;
 class A
@@ -577,7 +516,7 @@ int main()
 
 &lt;p&gt;  那么问题又来了，上面萃取机中的T如果是普通指针类型不是自定义类型那么不久萃取不出来了，好像是这样，因为普通指针类型并不像上面的A类型即自定义类型有ValueType的内嵌声明。不过STL才不会这么笨，它提供了一种叫做特化的东东，看过我网站第一篇空间配置器的想必一定都知道了，要是不知道的，麻烦在我网站上搜一下偏特化，看一下，有了偏特化那么针对原生指针就可以这样。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;//类型萃取机T*特化
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;//类型萃取机T*特化
 template&amp;lt;class T&amp;gt;struct traits&amp;lt;T*&amp;gt;
 { 
     //自定义类型中声明内嵌类型 
@@ -605,7 +544,7 @@ struct traits&amp;lt;const T*&amp;gt;
 &lt;p&gt;上面我们为了简单只说了ValueType(值类型)、Pointer（值指针类型）、Reference(值引用类型)&lt;br /&gt;
 上面说的几种还是很好理解，其实还有两种,一种就叫Difference这种类型就是记录两个迭代器之间距离，因此就可记录容量,最后一种叫iterator_categoty,见名知意，就是迭代器类型。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;template &amp;lt;class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&amp;amp;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;template &amp;lt;class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&amp;amp;&amp;gt;
 struct Iterator
 { 
     typedef Category IteratorCategory; // 迭代器类型
@@ -616,17 +555,20 @@ struct Iterator
 };
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;迭代器种类分为五种：&lt;br /&gt;
-- InputIterator：只读类型迭代器
-- OutputIterator：只写类型迭代器
-- ForwardIterator：前向迭代器，只能单向移动，类似于单链表的迭代器
-- BidirectionalIterator：双向迭代器，双向移动，类似于双向链表迭代器
-- RandomAccessIterator：随机读写迭代器，可以进行随机读写，vector类型&lt;/p&gt;
+&lt;p&gt;迭代器种类分为五种：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;InputIterator：只读类型迭代器&lt;/li&gt;
+&lt;li&gt;OutputIterator：只写类型迭代器&lt;/li&gt;
+&lt;li&gt;ForwardIterator：前向迭代器，只能单向移动，类似于单链表的迭代器&lt;/li&gt;
+&lt;li&gt;BidirectionalIterator：双向迭代器，双向移动，类似于双向链表迭代器&lt;/li&gt;
+&lt;li&gt;RandomAccessIterator：随机读写迭代器，可以进行随机读写，vector类型&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;他们有相互之间的继承关系，如下代码，想必不用说知道为什么这样继承，能双向移动必定能单向移动，以此类推。
 &lt;img src=&#34;https://chengsanban.github.io/image/STL-iterator/iterator.png&#34; alt=&#34;迭代器&#34; /&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;struct InputIteratorTag {};//只读
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;struct InputIteratorTag {};//只读
 struct OutputIteratorTag {};//只写
 struct ForwardIteratorTag : public InputIteratorTag {};
 struct BidirectionalIteratorTag : public ForwardIteratorTag {};

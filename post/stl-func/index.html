@@ -56,9 +56,9 @@
 
 
 
-<meta property="article:published_time" content="2018-04-07T00:00:00&#43;00:00"/>
+<meta property="article:published_time" content="2018-04-10T00:00:00&#43;00:00"/>
 
-<meta property="article:modified_time" content="2018-04-07T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-04-10T00:00:00&#43;00:00"/>
 
 
 
@@ -74,9 +74,9 @@
 <meta itemprop="description" content="一、仿函数概念 仿函数又称函数对象，虽然是类，但是在调用的时候，却可以像函数一样的被调用，作用在哪里？这个东西，在STL算法之中仿函数可以像模">
 
 
-<meta itemprop="datePublished" content="2018-04-07T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-04-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="627">
+<meta itemprop="datePublished" content="2018-04-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="626">
 
 
 
@@ -167,13 +167,13 @@
       <h1 class="post-title">STL解析(7):STL仿函数</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-04-07 </span>
+        <span class="post-time"> 2018-04-10 </span>
         <div class="post-category">
             
               <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 627 字 </span>
+        <span class="more-meta"> 约 626 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
       </div>
     </header>
@@ -210,7 +210,7 @@
 
 <p>要像一个STL组件，就要相应的型别（迭代器一文查看概念），不然当某个组件使用仿函数就会使用出错，每次写的话，不得好麻烦，好在STL提供了两类来提供继承，分别是一元仿函数，和二元仿函数，先说说一元仿函数，先看定义：</p>
 
-<pre><code class="language-c++">template &lt;class _Arg, class _Result&gt;
+<pre><code class="language-C++">template &lt;class _Arg, class _Result&gt;
 struct unary_function 
 { 
     typedef _Arg argument_type; 
@@ -220,7 +220,7 @@ struct unary_function
 
 <p>一看就看的出来，一元就指的是一个参数一个结果，下来再看看二元的：</p>
 
-<pre><code class="language-c++">template &lt;class _Arg1, class _Arg2, class _Result&gt;
+<pre><code class="language-C++">template &lt;class _Arg1, class _Arg2, class _Result&gt;
 struct binary_function 
 { 
     typedef _Arg1 first_argument_type; 
@@ -231,7 +231,7 @@ struct binary_function
 
 <p>一看就是针对于两个参数的操作符，使用时像下面这样正常继承就可：</p>
 
-<pre><code class="language-c++">template &lt;class _Tp&gt;
+<pre><code class="language-C++">template &lt;class _Tp&gt;
 struct plus : public binary_function&lt;_Tp,_Tp,_Tp&gt; 
 { 
     _Tp operator()(const _Tp&amp; __x, const _Tp&amp; __y) const 
@@ -243,7 +243,7 @@ struct plus : public binary_function&lt;_Tp,_Tp,_Tp&gt;
 
 <p>下面代码实现两个仿函数，一个是找出较大数，一个是找较小数，并且有两种操作方式:</p>
 
-<pre><code class="language-c++">#include&lt;iostream&gt;
+<pre><code class="language-C++">#include&lt;iostream&gt;
 using namespace std;
 
 template&lt;class T&gt;
@@ -275,11 +275,14 @@ int main()
 
 <p>but,都说了主要是个STL算法用的，所以至该举个例子</p>
 
-<pre><code class="language-c++">sort(iv.begain(), iv.end,greater&lt;int&gt;);
+<pre><code class="language-C++">sort(iv.begain(), iv.end,greater&lt;int&gt;);
 </code></pre>
 
-<p>这一段就是给排序算法传入了一个两个值之间找到达的比较仿函数。诺，这就是仿函数了。。。。，收工回家。<br />
-&gt; 图文来自博主原来博客chengvincent.com</p>
+<p>这一段就是给排序算法传入了一个两个值之间找到达的比较仿函数。诺，这就是仿函数了。。。。，收工回家。</p>
+
+<blockquote>
+<p>图文来自博主原来博客chengvincent.com</p>
+</blockquote>
 
     </div>
 
@@ -292,7 +295,7 @@ int main()
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-04-07</span>
+    <span class="item-content">2018-04-10</span>
   </p>
   
   <p class="copyright-item">
@@ -318,14 +321,9 @@ int main()
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/stl-algorithm/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">STL解析(6):STL算法</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/stl-adapter/">
-            <span class="next-text nav-default">STL解析(8):STL配接器</span>
+          <a class="next" href="/post/stl-algorithm/">
+            <span class="next-text nav-default">STL解析(6):STL算法</span>
             <span class="prev-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

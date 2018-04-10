@@ -1,6 +1,6 @@
 ---
 author: "橙三瓣"
-date: 2018-04-07
+date: 2018-04-10
 title: "STL解析(7):STL仿函数"
 tags: [
     "C++",
@@ -16,7 +16,7 @@ categories: [
 问题来了，定义个函数直接传入函数指针就行，何必呢！函数指针的方式一个是不符合抽象，另一个就是融入不了STL家族，打破STL作风。。。。
 ## 二、融入STL
 要像一个STL组件，就要相应的型别（迭代器一文查看概念），不然当某个组件使用仿函数就会使用出错，每次写的话，不得好麻烦，好在STL提供了两类来提供继承，分别是一元仿函数，和二元仿函数，先说说一元仿函数，先看定义：
-```c++
+```C++
 template <class _Arg, class _Result>
 struct unary_function 
 { 
@@ -25,7 +25,7 @@ struct unary_function
 };
 ```
 一看就看的出来，一元就指的是一个参数一个结果，下来再看看二元的：
-```c++
+```C++
 template <class _Arg1, class _Arg2, class _Result>
 struct binary_function 
 { 
@@ -35,7 +35,7 @@ struct binary_function
 };
 ```
 一看就是针对于两个参数的操作符，使用时像下面这样正常继承就可：
-```c++
+```C++
 template <class _Tp>
 struct plus : public binary_function<_Tp,_Tp,_Tp> 
 { 
@@ -45,7 +45,7 @@ struct plus : public binary_function<_Tp,_Tp,_Tp>
 ```
 ## 三、仿函数的使用
 下面代码实现两个仿函数，一个是找出较大数，一个是找较小数，并且有两种操作方式:
-```c++
+```C++
 #include<iostream>
 using namespace std;
 
@@ -76,8 +76,9 @@ int main()
 }
 ```
 but,都说了主要是个STL算法用的，所以至该举个例子
-```c++
+```C++
 sort(iv.begain(), iv.end,greater<int>);
 ```
 这一段就是给排序算法传入了一个两个值之间找到达的比较仿函数。诺，这就是仿函数了。。。。，收工回家。  
+
 > 图文来自博主原来博客chengvincent.com
