@@ -224,8 +224,11 @@ int main()
 &lt;p&gt;&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func1.png&#34; alt=&#34;容器总览&#34; /&gt;
 &lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func2.png&#34; alt=&#34;容器总览&#34; /&gt;
 &lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func3.png&#34; alt=&#34;容器总览&#34; /&gt;
-&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func4.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;br /&gt;
-&amp;gt; 图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;img src=&#34;https://chengsanban.github.io/image/STL-algorithm/func4.png&#34; alt=&#34;容器总览&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;图文来自博主原来博客chengvincent.com&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
       
     </item>
@@ -1161,26 +1164,28 @@ inline void __uninitialized_fill(_ForwardIter __first,  _ForwardIter __last, con
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;3、uninitialized_fill_n
-这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值
-```C++
-//进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
-//即是否为简单类型，或者说不需要构造函数的
-template &lt;class _ForwardIter, class _Size, class _Tp&gt;
-inline _ForwardIter  uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp&amp;amp; __x)
-{ return &lt;strong&gt;uninitialized_fill_n(&lt;/strong&gt;first, __n, __x, &lt;strong&gt;VALUE_TYPE(&lt;/strong&gt;first));}&lt;/li&gt;
+&lt;li&gt;3、uninitialized_fill_n&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;//判断完毕通过类型萃取和特化，如果是POD类型，交给相应部分处理，提高填充速度
+&lt;p&gt;这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C++&#34;&gt;//进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
+//即是否为简单类型，或者说不需要构造函数的
+template &amp;lt;class _ForwardIter, class _Size, class _Tp&amp;gt;
+inline _ForwardIter  uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp&amp;amp; __x)
+{ return __uninitialized_fill_n(__first, __n, __x, __VALUE_TYPE(__first));}
+
+//判断完毕通过类型萃取和特化，如果是POD类型，交给相应部分处理，提高填充速度
 //非POD就通过构造函数构造
-template &lt;class _ForwardIter, class _Size, class _Tp, class _Tp1&gt;
+template &amp;lt;class _ForwardIter, class _Size, class _Tp, class _Tp1&amp;gt;
 inline _ForwardIter  __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp&amp;amp; __x, _Tp1*)
-{
-    typedef typename __type_traits&amp;lt;_Tp1&amp;gt;::is_POD_type _Is_POD;
-    return &lt;strong&gt;uninitialized_fill_n_aux(&lt;/strong&gt;first, __n, __x, _Is_POD());
+{ 
+    typedef typename __type_traits&amp;lt;_Tp1&amp;gt;::is_POD_type _Is_POD; 
+    return __uninitialized_fill_n_aux(__first, __n, __x, _Is_POD());
 }
-```
-当然就有人问了，这么的话，这些函数有什么区别呀！参数呀，各位。。。。。。。。。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然就有人问了，这么的话，这些函数有什么区别呀！参数呀，各位。。。。。。。。。&lt;/p&gt;
 
 &lt;h2 id=&#34;四-小结&#34;&gt;四、小结&lt;/h2&gt;
 

@@ -489,8 +489,10 @@ inline void __uninitialized_fill(_ForwardIter __first,  _ForwardIter __last, con
 }
 ```  
 
-- 3、uninitialized_fill_n
-这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值
+- 3、uninitialized_fill_n  
+
+这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值  
+
 ```C++
 //进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
 //即是否为简单类型，或者说不需要构造函数的
@@ -506,7 +508,8 @@ inline _ForwardIter  __uninitialized_fill_n(_ForwardIter __first, _Size __n, con
     typedef typename __type_traits<_Tp1>::is_POD_type _Is_POD; 
     return __uninitialized_fill_n_aux(__first, __n, __x, _Is_POD());
 }
-```
+```  
+
 当然就有人问了，这么的话，这些函数有什么区别呀！参数呀，各位。。。。。。。。。
 ## 四、小结
 stl是C++程序的一份瑰宝，它代表了编程中最精妙的技法和最哲思的考虑，经常看大师的源码，就算不能增加智商也能潜移默化收到影响，希望大家最后技术越来越好，NO_BUG。

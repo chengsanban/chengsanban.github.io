@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-04-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-04-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="5103">
+<meta itemprop="wordCount" content="5115">
 
 
 
@@ -173,7 +173,7 @@
               <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
             
           </div>
-        <span class="more-meta"> 约 5103 字 </span>
+        <span class="more-meta"> 约 5115 字 </span>
         <span class="more-meta"> 预计阅读 11 分钟 </span>
       </div>
     </header>
@@ -716,26 +716,28 @@ inline void __uninitialized_fill(_ForwardIter __first,  _ForwardIter __last, con
 </code></pre>
 
 <ul>
-<li>3、uninitialized_fill_n
-这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值
-```C++
-//进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
-//即是否为简单类型，或者说不需要构造函数的
-template <class _ForwardIter, class _Size, class _Tp>
-inline _ForwardIter  uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp&amp; __x)
-{ return <strong>uninitialized_fill_n(</strong>first, __n, __x, <strong>VALUE_TYPE(</strong>first));}</li>
+<li>3、uninitialized_fill_n<br /></li>
 </ul>
 
-<p>//判断完毕通过类型萃取和特化，如果是POD类型，交给相应部分处理，提高填充速度
+<p>这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值</p>
+
+<pre><code class="language-C++">//进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
+//即是否为简单类型，或者说不需要构造函数的
+template &lt;class _ForwardIter, class _Size, class _Tp&gt;
+inline _ForwardIter  uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp&amp; __x)
+{ return __uninitialized_fill_n(__first, __n, __x, __VALUE_TYPE(__first));}
+
+//判断完毕通过类型萃取和特化，如果是POD类型，交给相应部分处理，提高填充速度
 //非POD就通过构造函数构造
-template <class _ForwardIter, class _Size, class _Tp, class _Tp1>
+template &lt;class _ForwardIter, class _Size, class _Tp, class _Tp1&gt;
 inline _ForwardIter  __uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp&amp; __x, _Tp1*)
-{
-    typedef typename __type_traits&lt;_Tp1&gt;::is_POD_type _Is_POD;
-    return <strong>uninitialized_fill_n_aux(</strong>first, __n, __x, _Is_POD());
+{ 
+    typedef typename __type_traits&lt;_Tp1&gt;::is_POD_type _Is_POD; 
+    return __uninitialized_fill_n_aux(__first, __n, __x, _Is_POD());
 }
-```
-当然就有人问了，这么的话，这些函数有什么区别呀！参数呀，各位。。。。。。。。。</p>
+</code></pre>
+
+<p>当然就有人问了，这么的话，这些函数有什么区别呀！参数呀，各位。。。。。。。。。</p>
 
 <h2 id="四-小结">四、小结</h2>
 
