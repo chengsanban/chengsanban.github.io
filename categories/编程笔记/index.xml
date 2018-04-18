@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>橙三瓣</copyright>
-    <lastBuildDate>Tue, 10 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://chengsanban.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>STL解析(8):STL配接器</title>
+      <link>https://chengsanban.github.io/post/stl-adapter/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://chengsanban.github.io/post/stl-adapter/</guid>
+      <description>一、配接器概念 配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相</description>
+    </item>
     
     <item>
       <title>STL解析(7):STL仿函数</title>

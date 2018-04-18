@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://chengsanban.github.io/post/stl-adapter/</loc>
+    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://chengsanban.github.io/post/stl-func/</loc>
     <lastmod>2018-04-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -60,14 +67,14 @@
   
   <url>
     <loc>https://chengsanban.github.io/tags/c/</loc>
-    <lastmod>2018-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chengsanban.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2018-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -80,21 +87,21 @@
   
   <url>
     <loc>https://chengsanban.github.io/post/</loc>
-    <lastmod>2018-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chengsanban.github.io/tags/stl/</loc>
-    <lastmod>2018-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chengsanban.github.io/tags/</loc>
-    <lastmod>2018-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -108,7 +115,7 @@
   
   <url>
     <loc>https://chengsanban.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2018-04-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

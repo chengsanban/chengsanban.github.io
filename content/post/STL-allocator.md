@@ -23,7 +23,7 @@ categories: [
 这个文件主要是利用了一些特化来处理一些构造函数和析构函数，并不是stl空间配置器的主菜，不了解特化的同学请在我网站上找找关于特化的文章。  
 ![空间配置器代码图](https://chengsanban.github.io/image/STL-allocator/allocator-struct.png)  
 stl_construct.h源码：
-```c++
+```C++
 template <class _T1, class _T2>
 inline void _Construct(_T1* __p, const _T2& __value)
 {new ((void*) __p) _T1(__value);}
@@ -92,7 +92,7 @@ inline void destroy(_ForwardIterator __first, _ForwardIterator __last)
 - 4、多线程状态  
 
 鉴于这种衍化，SGI形成了自己两层内存配置器的策略，一级和二级分配器。下来就谈一谈这两种配置器，这儿首先要谈一谈下面这个类，解释在代码注释中。,主要是把分配类型做进一步转化，并传递给深层的配置器处理。
-```c++
+```C++
 //用于把成员函数传递给更深层的配置函数处理、
 //用于把byte类型转换为sizeof (_Tp)处理
 template<class _Tp, class _Alloc>
@@ -126,7 +126,7 @@ class simple_alloc
 ![一级配置器](https://chengsanban.github.io/image/STL-allocator/allocator-rank1.png)
 
 带注释代码解析：
-```c++
+```C++
 template <int __inst>
 class __malloc_alloc_template 
 {
@@ -216,18 +216,18 @@ typedef __malloc_alloc_template<0> malloc_alloc;
 ![一级配置器](https://chengsanban.github.io/image/STL-allocator/alloctor-debris.png)
 
 二级空间配置器默认名叫 __default_alloc_template，定义如下:
-```c++
+```C++
 template <bool threads, int inst>
 class __default_alloc_template {...};
 ```
 这部分定义了二级分配器的自由链表的分配间隔等定义
-```c++
+```C++
 enum {_ALIGN = 8}; //分配间隔
 enum {_MAX_BYTES = 128}; //最大分配内存呢
 enum {_NFREELISTS = 16}; // _MAX_BYTES/_ALIGN：自由链表个数
 ```
 自由链表的定义，这样的设计可以使得，链表既可以指向另一个_Obj,也可以指向一个内存块，节省开销
-```c++
+```C++
 union _Obj 
 { 
     union _Obj* _M_free_list_link; 
@@ -238,7 +238,7 @@ union _Obj
 ![一级配置器](https://chengsanban.github.io/image/STL-allocator/allocator-rank2.png)
 
 正常申请自由链表够用时的注释代码：
-```c++
+```C++
 template <bool threads, int inst>
 class __default_alloc_template 
 {
@@ -329,7 +329,7 @@ private:
 内存池部分  
 上面提到如果自由链表没有地方可以分配了，就要refill来填充，由chunk_alloc()（稍后讲到）申请，默认取得20个新的区块，当然如上所说如果内存池不够的话，就会返回小于这个数目,而chunk_alloc()就是在内存池中申请，内存池就是二级配置器丛堆里申请一块空间，用指针指向首位，就像水池一样，用它来给自由链表填充。
 带注释内存池代码
-```c++
+```C++
 template <bool __threads, int __inst>
 void* __default_alloc_template<__threads, __inst>::_S_refill(size_t __n)
 { 
@@ -441,7 +441,7 @@ __default_alloc_template<__threads, __inst>::_S_chunk_alloc(size_t __size,  int&
 ### 4、uninitialized.h解析  
 这些函数用来，当实现一个容器的时候，分配完内存呢，在分配好的内存之上构造元素。成功的话构造出元素，失败什么都不做，析构掉原来构造的。  
 - 1、uninitialized_copy  这个函数参数依次是，输入端起始位置、输入端结束位置、输出端起始位置
-```c++
+```C++
 //进入初始化之后先进入__uninitialized_copy判断是否是POD(Plain Old Data)类型,
 //即是否为简单类型，或者说不需要构造函数的
 template <class _InputIter, class _ForwardIter>
@@ -466,10 +466,13 @@ inline wchar_t*  uninitialized_copy(const wchar_t* __first, const wchar_t* __las
     memmove(__result, __first, sizeof(wchar_t) * (__last - __first)); 
     return __result + (__last - __first);
 }
-```
-- 2、uninitialized_fill
-这个函数参数依次是，输出端起始处，输出端结束处，__x为初值
-```c++
+```  
+
+- 2、uninitialized_fill  
+
+这个函数参数依次是，输出端起始处，输出端结束处，__x为初值  
+
+```C++
 //进入初始化之后先进入__uninitialized_fill判断是否是POD(Plain Old Data)类型,
 //即是否为简单类型，或者说不需要构造函数的template 
 <class _ForwardIter, class _Tp>
@@ -484,10 +487,11 @@ inline void __uninitialized_fill(_ForwardIter __first,  _ForwardIter __last, con
     typedef typename __type_traits<_Tp1>::is_POD_type _Is_POD; 
     __uninitialized_fill_aux(__first, __last, __x, _Is_POD()); 
 }
-```
+```  
+
 - 3、uninitialized_fill_n
 这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值
-```c++
+```C++
 //进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
 //即是否为简单类型，或者说不需要构造函数的
 template <class _ForwardIter, class _Size, class _Tp>
