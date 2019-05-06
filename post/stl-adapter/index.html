@@ -3,10 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>STL解析(8):STL配接器 - 橙三瓣博客</title>
-  <link rel="alternate" hreflang="zh-cn" href="https://chengsanban.github.io" />
-
-<meta name="renderer" content="webkit" />
+  <title>STL解析(8):STL配接器 - 橙三瓣</title>
+  <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -18,41 +16,32 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="橙三瓣" />
-  <meta name="description" content="一、配接器概念 配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相" />
-
-  <meta name="keywords" content="chengsanban, blog, 橙三瓣" />
+<meta name="author" content="橙三瓣" /><meta name="description" content="一、配接器概念 配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://chengsanban.github.io/post/stl-adapter/" />
-
+<link rel="canonical" href="http://localhost:1313/post/stl-adapter/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
-
-
+<link href="/dist/%3cnil%3e" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="STL解析(8):STL配接器" />
 <meta property="og:description" content="一、配接器概念 配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://chengsanban.github.io/post/stl-adapter/" />
+<meta property="og:url" content="http://localhost:1313/post/stl-adapter/" />
 <meta property="article:published_time" content="2018-04-11T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2018-04-11T00:00:00&#43;00:00"/>
 
@@ -62,7 +51,7 @@
 
 <meta itemprop="datePublished" content="2018-04-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-04-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="631">
+<meta itemprop="wordCount" content="644">
 
 
 
@@ -80,14 +69,11 @@
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
-
-
-
 </head>
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">橙三瓣</a>
+    <a href="/" class="logo">Even</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -98,56 +84,45 @@
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
     <a href="/">
-        <li class="mobile-menu-item">主页</li>
+        <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
-        <li class="mobile-menu-item">归档</li>
+        <li class="mobile-menu-item">Archives</li>
       </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
+        <li class="mobile-menu-item">Tags</li>
       </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
+        <li class="mobile-menu-item">Categories</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">主人</li>
       </a>
   </ul>
 </nav>
-
-  <header id="header" class="header container">
-    <div class="logo-wrapper">
-  <a href="/" class="logo">橙三瓣</a>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     <li class="menu-item">
-        
-        <a class="menu-item-link" href="/">主页</a>
-        
+        <a class="menu-item-link" href="/">Home</a>
       </li><li class="menu-item">
-        
-        <a class="menu-item-link" href="/post/">归档</a>
-        
+        <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
-        
-        <a class="menu-item-link" href="/tags/">标签</a>
-        
+        <a class="menu-item-link" href="/tags/">Tags</a>
       </li><li class="menu-item">
-        
-        <a class="menu-item-link" href="/categories/">分类</a>
-        
+        <a class="menu-item-link" href="/categories/">Categories</a>
       </li><li class="menu-item">
-        
         <a class="menu-item-link" href="/about/">主人</a>
-        
       </li>
   </ul>
 </nav>
-  </header>
+    </header>
 
-  <div id="mobile-panel">
-    <main id="main" class="main bg-llight">
+    <main id="main" class="main">
       <div class="content-wrapper">
-        <div id="content" class="content container">
-          <article class="post bg-white">
+        <div id="content" class="content">
+          <article class="post">
     
     <header class="post-header">
       <h1 class="post-title">STL解析(8):STL配接器</h1>
@@ -155,21 +130,15 @@
       <div class="post-meta">
         <span class="post-time"> 2018-04-11 </span>
         <div class="post-category">
-            
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
-            
-          </div>
-        <span class="more-meta"> 约 631 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
+            </div>
+        
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
+    <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
-  <div class="post-toc-content">
+  <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
 <li>
@@ -186,8 +155,6 @@
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       
 
@@ -205,12 +172,19 @@ STL中改变容器接口的就叫容器适配器，改变迭代器接口的称�
 <h3 id="迭代器配接器">迭代器配接器</h3>
 
 <p>  像下面这种情况，原本的接口函数非常复杂back_insert_iterator&lt;_Container&gt;(__x)，也不宜用户理解，稍加封装把接口变为back_inserter(_Container&amp; __x) ，就看起来简单不少，虽然只是改了个名称。</p>
-
-<pre><code class="language-C++">inline back_insert_iterator&lt;_Container&gt;  
-back_inserter(_Container&amp; __x) 
-{ return back_insert_iterator&lt;_Container&gt;(__x); }
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="kr">inline</span> <span class="n">back_insert_iterator</span><span class="o">&lt;</span><span class="n">_Container</span><span class="o">&gt;</span>  
+<span class="n">back_inserter</span><span class="p">(</span><span class="n">_Container</span><span class="o">&amp;</span> <span class="n">__x</span><span class="p">)</span> 
+<span class="p">{</span> <span class="k">return</span> <span class="n">back_insert_iterator</span><span class="o">&lt;</span><span class="n">_Container</span><span class="o">&gt;</span><span class="p">(</span><span class="n">__x</span><span class="p">);</span> <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
 <p>然而你可以自己设计自己的适配器，让适配器根据你的意愿工作，例如你本来，是有一个输出迭代器，他的功能是输出到文本，你适当调整接口就可以让他输出到屏幕。</p>
 
 <h3 id="仿函数配接器">仿函数配接器</h3>
@@ -219,112 +193,130 @@ back_inserter(_Container&amp; __x)
 <strong>举个栗子</strong>：<br />
 我有10个数，一个求最大值和一个求最小值仿函数，现在我要实现的功能是找出里面最大的数字和最小的数字相减。<br />
 //求最大值仿函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="err"> </span><span class="nc">Big</span><span class="p">{</span> <span class="p">........}</span> 
+<span class="c1">//求最小值仿函数
+</span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="err"> </span><span class="nc">Small</span><span class="p">{</span> <span class="p">........}</span> 
+<span class="c1">//仿函数的仿函数 
+</span><span class="c1"></span><span class="n">tempalte</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T1</span><span class="p">,</span><span class="k">class</span><span class="err"> </span><span class="nc">T2</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="err"> </span><span class="nc">BigSubSmall</span><span class="o">&lt;</span><span class="n">Big</span><span class="p">,</span><span class="n">Small</span><span class="o">&gt;</span>
+<span class="p">{</span>
+     <span class="c1">//调用两个仿函数返回值做差
+</span><span class="c1"></span><span class="p">}</span> 
 
-<pre><code class="language-C++">template&lt;class T&gt;
-class Big{ ........} 
-//求最小值仿函数
-template&lt;class T&gt;
-class Small{ ........} 
-//仿函数的仿函数 
-tempalte&lt;class T1,class T2&gt;
-class BigSubSmall&lt;Big,Small&gt;
-{
-     //调用两个仿函数返回值做差
-} 
-
-//配接器
-int BSS(int *a)
-{ 
-    //调用BigSubSmall仿函数计算传回结果
-}
-</code></pre>
-
+<span class="c1">//配接器
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">BSS</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="p">{</span> 
+    <span class="c1">//调用BigSubSmall仿函数计算传回结果
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
 <blockquote>
 <p>图文来自博主原来博客chengvincent.com</p>
 </blockquote>
 
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
     <span class="item-content">橙三瓣</span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-04-11</span>
+    <span class="item-content">
+        2018-04-11
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
-          
           <a href="/tags/c/">C</a>
-          
           <a href="/tags/stl/">STL</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
         
-        
-          <a class="next" href="/post/stl-func/">
+        <a class="next" href="/post/stl-func/">
             <span class="next-text nav-default">STL解析(7):STL仿函数</span>
-            <span class="prev-text nav-mobile">下一篇</span>
+            <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>
     </footer>
-    
-
-  
-
-  
-
-  
   </article>
         </div>
+        
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="http://chengsanban@outlook.com" rel="me" class="iconfont icon-email" title="email"></a>
-      <a href="http://github.com/chengsanban" rel="me" class="iconfont icon-github" title="github"></a>
-  <a href="https://chengsanban.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
+
+  
 
   <span class="copyright-year">
     &copy; 
-    
-      2018 - 
+    2017 - 
     2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
-    <span class="author">橙三瓣</span>
+    <span class="author">olOwOlo</span>
   </span>
 </div>
     </footer>
@@ -334,11 +326,13 @@ int BSS(int *a)
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/%3cnil%3e"></script>
+
+
+
 
 
 
