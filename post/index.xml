@@ -1,95 +1,162 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Even - A super concise theme for Hugo</title>
-    <link>http://localhost:1313/post/</link>
-    <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
+    <title>Posts on My New Hugo Site</title>
+    <link>http://example.org/post/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Sun, 19 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2019年读过的书</title>
-      <link>http://localhost:1313/post/2019-read/</link>
+      <link>http://example.org/post/2019-read/</link>
       <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2019-read/</guid>
-      <description>《变形计》卡夫卡 《城堡》卡夫卡 《审判》卡夫卡 短片《司炉工》《一份致某科学院的报告》《老光棍布鲁姆菲尔德》《地洞》 《阴谋与爱情》席勒 《为奴十二</description>
+      <guid>http://example.org/post/2019-read/</guid>
+      <description>《变形计》卡夫卡 《城堡》卡夫卡 《审判》卡夫卡 短片《司炉工》《一份致某科学院的报告》《老光棍布鲁姆菲尔德》《地洞》 《阴谋与爱情》席勒 《为奴十二年》所罗门.诺萨普 《拉格朗日墓场》王晋康 《作死的兔子》安迪莱利 《1Q84》村上春树 《了不起的盖茨比》斯科特.菲茨德拉杰 《追风筝的人》卡勒德胡赛尼 《电视人》村上春树 《白夜行》东野圭吾  </description>
     </item>
     
     <item>
       <title>STL解析(8):STL配接器</title>
-      <link>http://localhost:1313/post/stl-adapter/</link>
+      <link>http://example.org/post/stl-adapter/</link>
       <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-adapter/</guid>
-      <description>一、配接器概念 配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相</description>
+      <guid>http://example.org/post/stl-adapter/</guid>
+      <description> 一、配接器概念 配接器又称适配器，既是STL组件之一，又是一种设计模式，设计模式中给出的概念就是：把一个类的接口转换为另一个接口，使原本不能相互协调工作的类工作。
+STL中改变容器接口的就叫容器适配器，改变迭代器接口的称之为迭代器适配器。
+二、配接器的应用 容器配接器  就像先前在讲容器概念的时候讲到的，stack和queue为什么是适配器，因为他只是简单改变了底层容器deque的接口而已。
+迭代器配接器  像下面这种情况，原本的接口函数非常复杂back_insert_iterator&amp;lt;_Container&amp;gt;(__x)，也不宜用户理解，稍加封装把接口变为back_inserter(_Container&amp;amp; __x) ，就看起来简单不少，虽然只是改了个名称。
+inline back_insert_iterator&amp;lt;_Container&amp;gt; back_inserter(_Container&amp;amp; __x) { return back_insert_iterator&amp;lt;_Container&amp;gt;(__x); }  然而你可以自己设计自己的适配器，让适配器根据你的意愿工作，例如你本来，是有一个输出迭代器，他的功能是输出到文本，你适当调整接口就可以让他输出到屏幕。
+仿函数配接器 仿函数配接器可能是最有用的配接器类型，使用它组合各种方法和仿函数，配接之后再配接。
+举个栗子：
+我有10个数，一个求最大值和一个求最小值仿函数，现在我要实现的功能是找出里面最大的数字和最小的数字相减。
+//求最大值仿函数
+template&amp;lt;class T&amp;gt; class Big{ ........} //求最小值仿函数 template&amp;lt;class T&amp;gt; class Small{ ........} //仿函数的仿函数 tempalte&amp;lt;class T1,class T2&amp;gt; class BigSubSmall&amp;lt;Big,Small&amp;gt; { //调用两个仿函数返回值做差 } //配接器 int BSS(int *a) { //调用BigSubSmall仿函数计算传回结果 }   图文来自博主原来博客chengvincent.com
+ </description>
     </item>
     
     <item>
       <title>STL解析(7):STL仿函数</title>
-      <link>http://localhost:1313/post/stl-func/</link>
+      <link>http://example.org/post/stl-func/</link>
       <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-func/</guid>
-      <description>一、仿函数概念 仿函数又称函数对象，虽然是类，但是在调用的时候，却可以像函数一样的被调用，作用在哪里？这个东西，在STL算法之中仿函数可以像模</description>
+      <guid>http://example.org/post/stl-func/</guid>
+      <description>一、仿函数概念 仿函数又称函数对象，虽然是类，但是在调用的时候，却可以像函数一样的被调用，作用在哪里？这个东西，在STL算法之中仿函数可以像模板参数一样被传递，STL算法有一部分由两种实现方式，一种是自定义方式，例如sort可以按照大小排序，另一种实现方式留给用户，用户可以定义自己的仿函数，传入算法模板参数。
+问题来了，定义个函数直接传入函数指针就行，何必呢！函数指针的方式一个是不符合抽象，另一个就是融入不了STL家族，打破STL作风。。。。
+二、融入STL 要像一个STL组件，就要相应的型别（迭代器一文查看概念），不然当某个组件使用仿函数就会使用出错，每次写的话，不得好麻烦，好在STL提供了两类来提供继承，分别是一元仿函数，和二元仿函数，先说说一元仿函数，先看定义：
+template &amp;lt;class _Arg, class _Result&amp;gt; struct unary_function { typedef _Arg argument_type; typedef _Result result_type; };  一看就看的出来，一元就指的是一个参数一个结果，下来再看看二元的：
+template &amp;lt;class _Arg1, class _Arg2, class _Result&amp;gt; struct binary_function { typedef _Arg1 first_argument_type; typedef _Arg2 second_argument_type; typedef _Result result_type; };  一看就是针对于两个参数的操作符，使用时像下面这样正常继承就可：
+template &amp;lt;class _Tp&amp;gt; struct plus : public binary_function&amp;lt;_Tp,_Tp,_Tp&amp;gt; { _Tp operator()(const _Tp&amp;amp; __x, const _Tp&amp;amp; __y) const { return __x + __y; } };  三、仿函数的使用 下面代码实现两个仿函数，一个是找出较大数，一个是找较小数，并且有两种操作方式:</description>
     </item>
     
     <item>
       <title>STL解析(6):STL算法</title>
-      <link>http://localhost:1313/post/stl-algorithm/</link>
+      <link>http://example.org/post/stl-algorithm/</link>
       <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-algorithm/</guid>
-      <description>一、算法是什么 简单来说，算法就是解决问题的方法，那么算法就很多了，好多事件都算算法，但今天说的是STL里面那些广为人知的算法，算法是在是太多</description>
+      <guid>http://example.org/post/stl-algorithm/</guid>
+      <description> 一、算法是什么 简单来说，算法就是解决问题的方法，那么算法就很多了，好多事件都算算法，但今天说的是STL里面那些广为人知的算法，算法是在是太多了，建议大家要了解就去，看看算法源码，了解一下大师的思想，本篇文章只是介绍一下用法和注意事项，并不探讨实现。
+二、算法的评判标准 空间复杂度+时间复杂度+大O表示法
+当一个算法要循环n次才能计算完毕，我们就说他O(n)的时间效率，当算法的构成要素很多，我们就取最大的参数，例如一个算法有两个循环，一个执行n^3循环，一个执行n次循环对于n^3来说就是微不足道，所以时间效率就是O(n^3)，当然还有其他的，例如二分查找就是O（log2^n），所以说算法时间效率某种程度等价于计算元素，与计算次数之间的函数关系 ，当然我们要注意一点，在整体幂都为1的情况之下，每个部分都会很大影响结果，所以就不能单纯取最大来算，例如两个n次循环组成算法应该是O(2n)而不是O(n)，还有就是某些查找算法可能每次查找效率不一样，时间复杂度就按最差计算空间复杂度就是占用空间多少，也以大O来计算。
+三、STL算法 1、算法名称表示 当STL算法名后带有_if后缀，说明这个算法要传入用户自定义的仿函数（请在博客中查找仿函数内容），例如sort_if,就是让你传入自己的比较仿函数来对比。
+当STL算法之后带有_copy后缀，说明此算法不会改变传入对象，而是copy一个对象，把执行操作之后的copy对象返回。
+2、所有算法例举  图文来自博主原来博客chengvincent.com
+ </description>
     </item>
     
     <item>
       <title>STL解析(5):STL关联式容器</title>
-      <link>http://localhost:1313/post/stl-container2/</link>
+      <link>http://example.org/post/stl-container2/</link>
       <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-container2/</guid>
-      <description>一、简说 看到上面这幅图片、关联式容器有两大类，一类的底层使用红黑树、另一类是哈希桶、有什么区别，看图： 二、底层容器介绍 既然都看到底层结构，就</description>
+      <guid>http://example.org/post/stl-container2/</guid>
+      <description> 一、简说 看到上面这幅图片、关联式容器有两大类，一类的底层使用红黑树、另一类是哈希桶、有什么区别，看图： 二、底层容器介绍 既然都看到底层结构，就直接讲讲底层结构的实现，然后再提一下各种容器的用法即可：
+红黑树 这里我来偷个懒，你们就到我的这篇文章上看看^-^ 点这儿^-^
+哈希桶 继续偷懒，你们就到我的这篇文章上看看^-^ 点这儿^-^
+三、容器的使用 map:
+set:
+其他类别mapXX和setXX的使用是一样的，但是在这里还是要解释一下这个value_comp函数，因为他是返回函数指针的，用法如下
+#include&amp;lt;iostream&amp;gt; #include&amp;lt;set&amp;gt; using namespace std; int main() { set&amp;lt;int&amp;gt; s1; s1.insert(1); s1.insert(45); s1.insert(9); s1.insert(11); set&amp;lt;int&amp;gt;::value_compare myComp; myComp = s1.value_comp(); set&amp;lt;int&amp;gt;::iterator iter1 = s1.find(45); set&amp;lt;int&amp;gt;::iterator iter2 = s1.find(9); cout &amp;lt;&amp;lt; myComp(*iter1, *iter2)&amp;lt;&amp;lt;endl; return 0; }   图文来自博主原来博客chengvincent.com
+ </description>
     </item>
     
     <item>
       <title>STL解析(4):STL序列式容器</title>
-      <link>http://localhost:1313/post/stl-container1/</link>
+      <link>http://example.org/post/stl-container1/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-container1/</guid>
-      <description>一、容器的分类 序列式容器：元素可以有序，但不一定有序的容器 关联式容器：元素内有自己的对应关系，例如set的key-value对 二、各种容器简</description>
+      <guid>http://example.org/post/stl-container1/</guid>
+      <description>一、容器的分类 序列式容器：元素可以有序，但不一定有序的容器
+关联式容器：元素内有自己的对应关系，例如set的key-value对
+二、各种容器简述 vector 底层结构： 申请的一段内存空间，利用start，finish(目前使用的空间尾)，end_of_storage(申请空间的尾)
+容器特点  类似于array数组的容器。支持随机读取。连续空间 有自动增容部分，相比于数组，更加便捷 两倍增容方式，使用realloc增容，要是空间后有空间最好，直接申请增容就好，要是没有空间，就要另外开辟，然后数据复制过去，释放原空间，返回现有空间。 方法介绍
+list 底层结构： 双向循环链表
+  容器特点：  更加节省空间，对空间把握精确 不支持随机读取， 双向循环方式可以使得一个指针便能遍历链表，方便快捷 方法介绍
+deque 底层结构： 双端队列，支持从两边插入，删除
+  容器特点：  假连续，看起来是一个首尾开放的vector其实不是。vector为了保持连续，当前空间尾不支持继续添加元素时，也不能增容时，会令外开辟空间，如上面图,但是deque并不会出现这种情况，因为它是假连续。看图 由于及假连续问题，所以容器结构比较复杂，执行效率比较低 系统维持一个map指针数组，指向各个分别的块，用复杂流程维系表面看起来像一个连续块 方法介绍
+stack 底层结构： deque封闭一端即可
+容器特点： 配接器，由于低层有现有容器简单封装（改其接口而使之成为另一种风貌，称之配接器）
+ 先进后出，所以并没有迭代器，不能遍历。有其他方法。
+ 方法介绍
+queue 底层结构： 双端队列deque封闭一端入口，另一端出口
+容器特点： 配接器，由于低层有现有容器简单封装，（改其接口而使之成为另一种风貌，称之配接器）
+ 先进先出，所以并没有迭代器，不能遍历。有其他方法。
+ 方法介绍
+heap 底层结构： vector+heap（算法）所以在情理上来说他并不算是一个容器，是vector的算法表现
+容器特点： 堆的原理是通过堆算法使vector中的元素表述为一种完全二叉树的结构，类似于按层把树放在vector中。
+ 堆算法不仅可以让堆顶元素最小或最大，还能进行堆排序
+ 堆的具体介绍详见这篇文章 点击跳转
+ 方法介绍
+priority_queue 底层结构： 底部就是堆的封装
+容器特点： 由于堆有加入元素从最后加入，从堆顶出元素的特点，且堆顶元素必为最大或最小，并且底部是一个vector诸多便捷，所以正好做一个队列使用，队列事件的优先级权值做堆的节点，最大优先级的事件就会出现在堆顶。</description>
     </item>
     
     <item>
       <title>STL解析(3):迭代器和类型萃取技术</title>
-      <link>http://localhost:1313/post/stl-iterator/</link>
+      <link>http://example.org/post/stl-iterator/</link>
       <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-iterator/</guid>
-      <description>一、迭代器简介 迭代器的实现意义就是让外界不知道容器的具体实现的情况之下，还能遍历容器，做到最好的封装。在算法和容器之间，迭代器扮演者桥梁的角</description>
+      <guid>http://example.org/post/stl-iterator/</guid>
+      <description>一、迭代器简介 迭代器的实现意义就是让外界不知道容器的具体实现的情况之下，还能遍历容器，做到最好的封装。在算法和容器之间，迭代器扮演者桥梁的角色，算法不需要知道容器的设计方式，只要算法借助迭代器就能遍历容器。
+本文不讲解迭代器的使用方法，重在探究迭代器的实现
+二、迭代器的简单原理 下面简单实现一个vector迭代器，重在看清其中原理
+#include&amp;lt;iostream&amp;gt; using namespace std; //简单的Vector迭代器 template&amp;lt;class T&amp;gt; class VectorIterator { public: //类型重定义 typedef T ValueType; typedef T* Pointer; typedef T&amp;amp; Reference; typedef VectorIterator&amp;lt;T&amp;gt; Iterator; //构造 VectorIterator(Pointer ptr) :_ptr(ptr) {} //前置++ Iterator operator++() { _ptr++; return VectorIterator&amp;lt;T&amp;gt;(_ptr); } //!=重载 bool operator!=(Iterator x) { return _ptr != x._ptr; } //*重载 ValueType operator*() { return *_ptr; } private: Pointer _ptr; }; //简单的vector template&amp;lt;class T&amp;gt; class Vector { public: typedef VectorIterator&amp;lt;T&amp;gt; Iterator; typedef T ValueType; typedef T* Pointer; typedef T&amp;amp; Reference; //构造 Vector() { for (int i = 0; i &amp;lt; 10; ++i) { _a[i] = i + 1; } } //容器末后第一位置迭代器 Iterator End() { return Iterator(&amp;amp;_a[10]); } //容器首迭代器 Iterator Began() { return Iterator(&amp;amp;_a[0]); } private: T _a[10]; }; //用迭代器遍历元素 //其实也就是算法部分 int main() { Vector&amp;lt;int&amp;gt; V1; Vector&amp;lt;int&amp;gt;::Iterator t1 = V1.</description>
     </item>
     
     <item>
       <title>STL解析(2):STL空间配置器</title>
-      <link>http://localhost:1313/post/stl-allocator/</link>
+      <link>http://example.org/post/stl-allocator/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-allocator/</guid>
-      <description>一、什么是空间配置器 空间配置器是STL用来为容器分配空间的组件。 二、本文的一点注意事项 本文解析空间配置器事宜SGI的STL为蓝本的，其中通过</description>
+      <guid>http://example.org/post/stl-allocator/</guid>
+      <description>一、什么是空间配置器 空间配置器是STL用来为容器分配空间的组件。
+二、本文的一点注意事项 本文解析空间配置器事宜SGI的STL为蓝本的，其中通过画图和源码的分析组成本文章，如果仅仅只是想简单了解一下空间配置器就可以看图，但是由于图中的一些术语根据源码而来，并不是很好理解，有必要的话请看一下源码解析，尽量我会把文章内容讲清楚，如果内容有误，欢迎拍砖。
+三、SGI_STL空间配置器解析 1、总说 首先介绍一下大体框架，SGI_STL（以后简称stl）,在设计之初吧实际的类型构造，内存分配、以及一下大批量内存操作是分开来写的，这样写的好处就是各部分体现自己的作用，construct文件中主要是类型构造和析构，alloc文件主要是内存分配与释放，而最后一个文件主要定义一些大批内存的有关东西。当然上面这些都是SGI自己的思想，其他的stl还有一个分配内存的东西，就是图上左面的东东，由于他只是简单封装底层函数，效率不高，所以SGI才重写了自己的配置器。下面看图。
+2、construct详解 这个文件主要是利用了一些特化来处理一些构造函数和析构函数，并不是stl空间配置器的主菜，不了解特化的同学请在我网站上找找关于特化的文章。
+stl_construct.h源码：
+template &amp;lt;class _T1, class _T2&amp;gt; inline void _Construct(_T1* __p, const _T2&amp;amp; __value) {new ((void*) __p) _T1(__value);} template &amp;lt;class _T1&amp;gt; inline void _Construct(_T1* __p) {new ((void*) __p) _T1();} template &amp;lt;class _Tp&amp;gt; inline void _Destroy(_Tp* __pointer) {__pointer-&amp;gt;~_Tp();} template &amp;lt;class _ForwardIterator&amp;gt; void__destroy_aux(_ForwardIterator __first, _ForwardIterator __last, __false_type) {for ( ; __first != __last; ++__first) destroy(&amp;amp;*__first);} template &amp;lt;class _ForwardIterator&amp;gt; inline void __destroy_aux(_ForwardIterator, _ForwardIterator, __true_type) {} template &amp;lt;class _ForwardIterator, class _Tp&amp;gt; inline void __destroy(_ForwardIterator __first, _ForwardIterator __last, _Tp*) { typedef typename __type_traits&amp;lt;_Tp&amp;gt;::has_trivial_destructor_Trivial_destructor; __destroy_aux(__first, __last, _Trivial_destructor()); } template &amp;lt;class _ForwardIterator&amp;gt; inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last) {__destroy(__first, __last, __VALUE_TYPE(__first));} inline void _Destroy(char*, char*) {} inline void _Destroy(int*, int*) {} inline void _Destroy(long*, long*) {} inline void _Destroy(float*, float*) {} inline void _Destroy(double*, double*) {} #ifdef __STL_HAS_WCHAR_Tinline void _Destroy(wchar_t*, wchar_t*) {} #endif /* __STL_HAS_WCHAR_T */ // -------------------------------------------------- // Old names from the HP STL.</description>
     </item>
     
     <item>
       <title>STL解析(1):STL产生的缘由</title>
-      <link>http://localhost:1313/post/stl-summary/</link>
+      <link>http://example.org/post/stl-summary/</link>
       <pubDate>Mon, 02 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/stl-summary/</guid>
-      <description>一、STL产生的缘由 人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可</description>
+      <guid>http://example.org/post/stl-summary/</guid>
+      <description> 一、STL产生的缘由  人类为什么会发展的如此之快，为什么，吃货为什么能吃到各种食物？牵强一点，拉到今天的主题，不就是因为祖先留下了好多经验和可以借鉴的地方。所以必要时，不是另起轮子，而是站在巨人的肩膀上是很重要的。
+程序员也是这样一群人，大家都开始时，自己做自己的事情，可是大家最后发现，天哪，每个人都在重复好多工作，同样一个排序写成千上万遍，同样一个数据结构写成千上万变，这时候，大家就觉得心好累，一个人说，哈哈，让我们用共同的智商来写一个模板一样大家都可以用上的东西，社区们都动作起来，这样就有了STL，大家就可以用前面伟大的程序员写的“轮子”了，每个人都只用关系自己的具体功能了，而不用再关心数据怎么储存之类的鸡毛小事了，总不能，我写个hello，world还要写机器驱动吧，当然还有boost库，很多智慧的结晶。
+二、STL的基本架构  STL六大组件：容器、算法、迭代器、配接器、空间配置器、仿函数
+容器：是各种数据结构，vector、list、deque、set、map等，用来放数据，毕竟程序运行的基础是数据。
+算法：对于容器的数据进行操作，进行排序、搜索、复制、删除等各种操作。
+迭代器：等于说是容器和算法之间的胶合剂，说的通俗一点，容器并不想要其它东西直接看见自己的数据、所以它做了一个东西也就是迭代器;让迭代器来访问自己的数据，交接口给算法。就和古代的皇上并不是谁都能见，也不安全，所以都会有一个太监来传送消息一样。
+仿函数：像函数一样、可算作算法的某种策略、经常用重载类模板实现。
+配接器：用来修饰容器、仿函数、或者迭代器、像queue底部其实由deque实现，其实只算是一种修饰过的容器，也就是配接器而已。改变函数或者迭代器接口也算作修饰而已。
+配置器：负责容器空间的配置与释放  图文来自博主原来博客chengvincent.com
+ </description>
     </item>
     
   </channel>
