@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>STL解析(4):STL序列式容器 - 橙三瓣个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="橙三瓣" /><meta name="description" content="一、容器的分类 序列式容器：元素可以有序，但不一定有序的容器 关联式容器：元素内有自己的对应关系，例如set的key-value对 二、各种容器简" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.55.5 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://chengsanban.github.io/post/stl-container1/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/%3cnil%3e" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="STL解析(4):STL序列式容器" />
+<meta property="og:description" content="一、容器的分类 序列式容器：元素可以有序，但不一定有序的容器 关联式容器：元素内有自己的对应关系，例如set的key-value对 二、各种容器简" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://chengsanban.github.io/post/stl-container1/" />
+<meta property="article:published_time" content="2018-04-07T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-04-07T00:00:00&#43;00:00"/>
+
+<meta itemprop="name" content="STL解析(4):STL序列式容器">
+<meta itemprop="description" content="一、容器的分类 序列式容器：元素可以有序，但不一定有序的容器 关联式容器：元素内有自己的对应关系，例如set的key-value对 二、各种容器简">
+
+
+<meta itemprop="datePublished" content="2018-04-07T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1098">
+
+
+
+<meta itemprop="keywords" content="C&#43;&#43;,C,STL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="STL解析(4):STL序列式容器"/>
+<meta name="twitter:description" content="一、容器的分类 序列式容器：元素可以有序，但不一定有序的容器 关联式容器：元素内有自己的对应关系，例如set的key-value对 二、各种容器简"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">主人</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">主人</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">STL解析(4):STL序列式容器</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-07 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"> 编程笔记 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-容器的分类">一、容器的分类</a></li>
+<li><a href="#二-各种容器简述">二、各种容器简述</a>
+<ul>
+<li><a href="#vector">vector</a>
+<ul>
+<li><a href="#底层结构">底层结构：</a></li>
+<li><a href="#容器特点">容器特点</a></li>
+</ul></li>
+<li><a href="#list">list</a>
+<ul>
+<li><a href="#底层结构-1">底层结构：</a></li>
+<li><a href="#容器特点-1">容器特点：</a></li>
+</ul></li>
+<li><a href="#deque">deque</a>
+<ul>
+<li><a href="#底层结构-2">底层结构：</a></li>
+<li><a href="#容器特点-2">容器特点：</a></li>
+</ul></li>
+<li><a href="#stack">stack</a>
+<ul>
+<li><a href="#底层结构-3">底层结构：</a></li>
+<li><a href="#容器特点-3">容器特点：</a></li>
+</ul></li>
+<li><a href="#queue">queue</a>
+<ul>
+<li><a href="#底层结构-4">底层结构：</a></li>
+<li><a href="#容器特点-4">容器特点：</a></li>
+</ul></li>
+<li><a href="#heap">heap</a>
+<ul>
+<li><a href="#底层结构-5">底层结构：</a></li>
+<li><a href="#容器特点-5">容器特点：</a></li>
+</ul></li>
+<li><a href="#priority-queue">priority_queue</a>
+<ul>
+<li><a href="#底层结构-6">底层结构：</a></li>
+<li><a href="#容器特点-6">容器特点：</a></li>
+</ul></li>
+<li><a href="#slist">slist</a>
+<ul>
+<li><a href="#底层结构-7">底层结构：</a></li>
+<li><a href="#容器特点-7">容器特点：</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="一-容器的分类">一、容器的分类</h2>
+
+<p>序列式容器：元素可以有序，但不一定有序的容器<br />
+关联式容器：元素内有自己的对应关系，例如set的key-value对<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-allContainer.png" alt="容器总览" /></p>
+
+<h2 id="二-各种容器简述">二、各种容器简述</h2>
+
+<h3 id="vector">vector</h3>
+
+<h4 id="底层结构">底层结构：</h4>
+
+<p>申请的一段内存空间，利用start，finish(目前使用的空间尾)，end_of_storage(申请空间的尾)<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-vector.png" alt="vector" /></p>
+
+<h4 id="容器特点">容器特点</h4>
+
+<ul>
+<li>类似于array数组的容器。支持随机读取。连续空间</li>
+<li>有自动增容部分，相比于数组，更加便捷</li>
+<li>两倍增容方式，使用realloc增容，要是空间后有空间最好，直接申请增容就好，要是没有空间，就要另外开辟，然后数据复制过去，释放原空间，返回现有空间。</li>
+
+<li><p>方法介绍<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-vectorFunction.png" alt="vector函数" /></p>
+
+<h3 id="list">list</h3>
+
+<h4 id="底层结构-1">底层结构：</h4>
+
+<p>双向循环链表<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-list.png" alt="list" /></p></li>
+</ul>
+
+<h4 id="容器特点-1">容器特点：</h4>
+
+<ul>
+<li>更加节省空间，对空间把握精确</li>
+<li>不支持随机读取，</li>
+<li>双向循环方式可以使得一个指针便能遍历链表，方便快捷</li>
+
+<li><p>方法介绍<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-listFunction.png" alt="list函数" /></p>
+
+<h3 id="deque">deque</h3>
+
+<h4 id="底层结构-2">底层结构：</h4>
+
+<p>双端队列，支持从两边插入，删除<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-deque.png" alt="deque" /></p></li>
+</ul>
+
+<h4 id="容器特点-2">容器特点：</h4>
+
+<ul>
+<li>假连续，看起来是一个首尾开放的vector其实不是。vector为了保持连续，当前空间尾不支持继续添加元素时，也不能增容时，会令外开辟空间，如上面图,但是deque并不会出现这种情况，因为它是假连续。看图</li>
+<li>由于及假连续问题，所以容器结构比较复杂，执行效率比较低</li>
+<li>系统维持一个map指针数组，指向各个分别的块，用复杂流程维系表面看起来像一个连续块</li>
+
+<li><p>方法介绍<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-dequeFunction.png" alt="deque函数" /></p>
+
+<h3 id="stack">stack</h3>
+
+<h4 id="底层结构-3">底层结构：</h4>
+
+<p>deque封闭一端即可</p>
+
+<h4 id="容器特点-3">容器特点：</h4></li>
+
+<li><p>配接器，由于低层有现有容器简单封装（改其接口而使之成为另一种风貌，称之配接器）</p></li>
+
+<li><p>先进后出，所以并没有迭代器，不能遍历。有其他方法。</p></li>
+
+<li><p>方法介绍<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-stackFunction.png" alt="stack函数" /></p>
+
+<h3 id="queue">queue</h3>
+
+<h4 id="底层结构-4">底层结构：</h4>
+
+<p>双端队列deque封闭一端入口，另一端出口</p>
+
+<h4 id="容器特点-4">容器特点：</h4></li>
+
+<li><p>配接器，由于低层有现有容器简单封装，（改其接口而使之成为另一种风貌，称之配接器）</p></li>
+
+<li><p>先进先出，所以并没有迭代器，不能遍历。有其他方法。</p></li>
+
+<li><p>方法介绍<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-queueFunction.png" alt="queue函数" /></p>
+
+<h3 id="heap">heap</h3>
+
+<h4 id="底层结构-5">底层结构：</h4>
+
+<p>vector+heap（算法）所以在情理上来说他并不算是一个容器，是vector的算法表现</p>
+
+<h4 id="容器特点-5">容器特点：</h4></li>
+
+<li><p>堆的原理是通过堆算法使vector中的元素表述为一种完全二叉树的结构，类似于按层把树放在vector中。</p></li>
+
+<li><p>堆算法不仅可以让堆顶元素最小或最大，还能进行堆排序</p></li>
+
+<li><p>堆的具体介绍详见这篇文章 点击跳转</p></li>
+
+<li><p>方法介绍<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-heapFunction.png" alt="heap函数" /></p>
+
+<h3 id="priority-queue">priority_queue</h3>
+
+<h4 id="底层结构-6">底层结构：</h4>
+
+<p>底部就是堆的封装</p>
+
+<h4 id="容器特点-6">容器特点：</h4></li>
+
+<li><p>由于堆有加入元素从最后加入，从堆顶出元素的特点，且堆顶元素必为最大或最小，并且底部是一个vector诸多便捷，所以正好做一个队列使用，队列事件的优先级权值做堆的节点，最大优先级的事件就会出现在堆顶。</p></li>
+
+<li><p>具体实现看堆</p></li>
+
+<li><p>方法介绍<br />
+<img src="https://chengsanban.github.io/image/STL-container/STL-PqueueFunction.png" alt="Pqueue函数" /></p>
+
+<h3 id="slist">slist</h3>
+
+<h4 id="底层结构-7">底层结构：</h4>
+
+<p>双向链表，list是双向循环链表</p>
+
+<h4 id="容器特点-7">容器特点：</h4></li>
+
+<li><p>list迭代器是双向迭代器，而slist是前向迭代器，迭代器的具体介绍详见这篇文章 点击跳转</p></li>
+</ul>
+
+<blockquote>
+<p>图文来自博主原来博客chengvincent.com</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">橙三瓣</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-04-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+          <a href="/tags/c/">C</a>
+          <a href="/tags/stl/">STL</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/stl-container2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">STL解析(5):STL关联式容器</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/stl-iterator/">
+            <span class="next-text nav-default">STL解析(3):迭代器和类型萃取技术</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://chengsanban.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">chengsanban</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/%3cnil%3e"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
