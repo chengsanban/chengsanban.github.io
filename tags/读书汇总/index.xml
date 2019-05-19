@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>读书汇总 on My New Hugo Site</title>
-    <link>http://example.org/tags/%E8%AF%BB%E4%B9%A6%E6%B1%87%E6%80%BB/</link>
-    <description>Recent content in 读书汇总 on My New Hugo Site</description>
+    <title>读书汇总 on Even - A super concise theme for Hugo</title>
+    <link>http://localhost:1313/tags/%E8%AF%BB%E4%B9%A6%E6%B1%87%E6%80%BB/</link>
+    <description>Recent content in 读书汇总 on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Sun, 19 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/%E8%AF%BB%E4%B9%A6%E6%B1%87%E6%80%BB/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/%E8%AF%BB%E4%B9%A6%E6%B1%87%E6%80%BB/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2019年读过的书</title>
-      <link>http://example.org/post/2019-read/</link>
+      <link>http://localhost:1313/post/2019-read/</link>
       <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/2019-read/</guid>
-      <description>《变形计》卡夫卡 《城堡》卡夫卡 《审判》卡夫卡 短片《司炉工》《一份致某科学院的报告》《老光棍布鲁姆菲尔德》《地洞》 《阴谋与爱情》席勒 《为奴十二年》所罗门.诺萨普 《拉格朗日墓场》王晋康 《作死的兔子》安迪莱利 《1Q84》村上春树 《了不起的盖茨比》斯科特.菲茨德拉杰 《追风筝的人》卡勒德胡赛尼 《电视人》村上春树 《白夜行》东野圭吾  </description>
+      <guid>http://localhost:1313/post/2019-read/</guid>
+      <description>《变形计》卡夫卡 《城堡》卡夫卡 《审判》卡夫卡 短片《司炉工》《一份致某科学院的报告》《老光棍布鲁姆菲尔德》《地洞》 《阴谋与爱情》席勒 《为奴十二</description>
     </item>
     
   </channel>
