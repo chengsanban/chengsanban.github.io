@@ -9,6 +9,49 @@
   </url>
   
   <url>
+    <loc>https://chengsanban.github.io/categories/</loc>
+    <lastmod>2019-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengsanban.github.io/</loc>
+    <lastmod>2019-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengsanban.github.io/post/</loc>
+    <lastmod>2019-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengsanban.github.io/post/2019-read/</loc>
+    <lastmod>2019-05-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengsanban.github.io/tags/</loc>
+    <lastmod>2019-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengsanban.github.io/tags/%E8%AF%BB%E4%B9%A6%E6%B1%87%E6%80%BB/</loc>
+    <lastmod>2019-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengsanban.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://chengsanban.github.io/tags/c/</loc>
     <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -16,24 +59,6 @@
   
   <url>
     <loc>https://chengsanban.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengsanban.github.io/categories/</loc>
-    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengsanban.github.io/</loc>
-    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengsanban.github.io/post/</loc>
     <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -49,12 +74,6 @@
     <lastmod>2018-04-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengsanban.github.io/tags/</loc>
-    <lastmod>2018-04-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
