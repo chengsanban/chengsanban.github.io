@@ -189,7 +189,7 @@
 stl_construct.h源码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -249,7 +249,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">58
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_T1</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_T2</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_T1</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_T2</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="kt">void</span> <span class="n">_Construct</span><span class="p">(</span><span class="n">_T1</span><span class="o">*</span> <span class="n">__p</span><span class="p">,</span> <span class="k">const</span> <span class="n">_T2</span><span class="o">&amp;</span> <span class="n">__value</span><span class="p">)</span>
 <span class="p">{</span><span class="k">new</span> <span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="n">__p</span><span class="p">)</span> <span class="n">_T1</span><span class="p">(</span><span class="n">__value</span><span class="p">);}</span>
 
@@ -324,7 +324,7 @@ stl_construct.h源码：</p>
 <p>鉴于这种衍化，SGI形成了自己两层内存配置器的策略，一级和二级分配器。下来就谈一谈这两种配置器，这儿首先要谈一谈下面这个类，解释在代码注释中。,主要是把分配类型做进一步转化，并传递给深层的配置器处理。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -352,7 +352,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//用于把成员函数传递给更深层的配置函数处理、
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//用于把成员函数传递给更深层的配置函数处理、
 </span><span class="c1">//用于把byte类型转换为sizeof (_Tp)处理
 </span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_Tp</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Alloc</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="err"> </span><span class="nc">simple_alloc</span> 
@@ -390,7 +390,7 @@ stl_construct.h源码：</p>
 <p>带注释代码解析：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -468,7 +468,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">76
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">int</span> <span class="n">__inst</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">int</span> <span class="n">__inst</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="err"> </span><span class="nc">__malloc_alloc_template</span> 
 <span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
@@ -565,11 +565,11 @@ stl_construct.h源码：</p>
 <p>二级空间配置器默认名叫 __default_alloc_template，定义如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">bool</span> <span class="n">threads</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inst</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">bool</span> <span class="n">threads</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inst</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="err"> </span><span class="nc">__default_alloc_template</span> <span class="p">{...};</span>
 </code></pre></td></tr></table>
 </div>
@@ -577,12 +577,12 @@ stl_construct.h源码：</p>
 <p>这部分定义了二级分配器的自由链表的分配间隔等定义</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">enum</span> <span class="p">{</span><span class="n">_ALIGN</span> <span class="o">=</span> <span class="mi">8</span><span class="p">};</span> <span class="c1">//分配间隔
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">enum</span> <span class="p">{</span><span class="n">_ALIGN</span> <span class="o">=</span> <span class="mi">8</span><span class="p">};</span> <span class="c1">//分配间隔
 </span><span class="c1"></span><span class="k">enum</span> <span class="p">{</span><span class="n">_MAX_BYTES</span> <span class="o">=</span> <span class="mi">128</span><span class="p">};</span> <span class="c1">//最大分配内存呢
 </span><span class="c1"></span><span class="k">enum</span> <span class="p">{</span><span class="n">_NFREELISTS</span> <span class="o">=</span> <span class="mi">16</span><span class="p">};</span> <span class="c1">// _MAX_BYTES/_ALIGN：自由链表个数
 </span></code></pre></td></tr></table>
@@ -591,14 +591,14 @@ stl_construct.h源码：</p>
 <p>自由链表的定义，这样的设计可以使得，链表既可以指向另一个_Obj,也可以指向一个内存块，节省开销</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">union</span> <span class="n">_Obj</span> 
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">union</span> <span class="n">_Obj</span> 
 <span class="p">{</span> 
     <span class="k">union</span> <span class="n">_Obj</span><span class="o">*</span> <span class="n">_M_free_list_link</span><span class="p">;</span> 
     <span class="kt">char</span> <span class="n">_M_client_data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="cm">/* The client sees this. */</span> 
@@ -612,7 +612,7 @@ stl_construct.h源码：</p>
 <p>正常申请自由链表够用时的注释代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -697,7 +697,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">83
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">bool</span> <span class="n">threads</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inst</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">bool</span> <span class="n">threads</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inst</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="err"> </span><span class="nc">__default_alloc_template</span> 
 <span class="p">{</span>
 <span class="k">private</span><span class="o">:</span> 
@@ -791,7 +791,7 @@ stl_construct.h源码：</p>
 带注释内存池代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">  1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -899,7 +899,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">106
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">bool</span> <span class="n">__threads</span><span class="p">,</span> <span class="kt">int</span> <span class="n">__inst</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="kt">bool</span> <span class="n">__threads</span><span class="p">,</span> <span class="kt">int</span> <span class="n">__inst</span><span class="o">&gt;</span>
 <span class="kt">void</span><span class="o">*</span> <span class="n">__default_alloc_template</span><span class="o">&lt;</span><span class="n">__threads</span><span class="p">,</span> <span class="n">__inst</span><span class="o">&gt;::</span><span class="n">_S_refill</span><span class="p">(</span><span class="n">size_t</span> <span class="n">__n</span><span class="p">)</span>
 <span class="p">{</span> 
     <span class="c1">//用_S_chunk_alloc申请空间， 
@@ -1014,7 +1014,7 @@ stl_construct.h源码：</p>
 - 1、uninitialized_copy  这个函数参数依次是，输入端起始位置、输入端结束位置、输出端起始位置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1040,7 +1040,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//进入初始化之后先进入__uninitialized_copy判断是否是POD(Plain Old Data)类型,
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//进入初始化之后先进入__uninitialized_copy判断是否是POD(Plain Old Data)类型,
 </span><span class="c1">//即是否为简单类型，或者说不需要构造函数的
 </span><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_InputIter</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_ForwardIter</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="n">_ForwardIter</span> <span class="n">uninitialized_copy</span><span class="p">(</span><span class="n">_InputIter</span> <span class="n">__first</span><span class="p">,</span> <span class="n">_InputIter</span> <span class="n">__last</span><span class="p">,</span> <span class="n">_ForwardIter</span> <span class="n">__result</span><span class="p">)</span>
@@ -1074,7 +1074,7 @@ stl_construct.h源码：</p>
 <p>这个函数参数依次是，输出端起始处，输出端结束处，__x为初值</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1090,7 +1090,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//进入初始化之后先进入__uninitialized_fill判断是否是POD(Plain Old Data)类型,
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//进入初始化之后先进入__uninitialized_fill判断是否是POD(Plain Old Data)类型,
 </span><span class="c1">//即是否为简单类型，或者说不需要构造函数的template 
 </span><span class="c1"></span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_ForwardIter</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Tp</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="kt">void</span> <span class="n">uninitialized_fill</span><span class="p">(</span><span class="n">_ForwardIter</span> <span class="n">__first</span><span class="p">,</span> <span class="n">_ForwardIter</span> <span class="n">__last</span><span class="p">,</span>  <span class="k">const</span> <span class="n">_Tp</span><span class="o">&amp;</span> <span class="n">__x</span><span class="p">)</span>
@@ -1114,7 +1114,7 @@ stl_construct.h源码：</p>
 <p>这个函数参数依次是，要初始化地点的开始的迭代器，要初始化大小，初始化的值</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1130,7 +1130,7 @@ stl_construct.h源码：</p>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//进入初始化之后先进入__uninitialized_fill_n判断是否是POD(Plain Old Data)类型,
 </span><span class="c1">//即是否为简单类型，或者说不需要构造函数的
 </span><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_ForwardIter</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Size</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Tp</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="n">_ForwardIter</span>  <span class="n">uninitialized_fill_n</span><span class="p">(</span><span class="n">_ForwardIter</span> <span class="n">__first</span><span class="p">,</span> <span class="n">_Size</span> <span class="n">__n</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Tp</span><span class="o">&amp;</span> <span class="n">__x</span><span class="p">)</span>

@@ -166,7 +166,7 @@
 <p>要像一个STL组件，就要相应的型别（迭代器一文查看概念），不然当某个组件使用仿函数就会使用出错，每次写的话，不得好麻烦，好在STL提供了两类来提供继承，分别是一元仿函数，和二元仿函数，先说说一元仿函数，先看定义：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -174,7 +174,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_Arg</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Result</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_Arg</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Result</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="n">unary_function</span> 
 <span class="p">{</span> 
     <span class="k">typedef</span> <span class="n">_Arg</span> <span class="n">argument_type</span><span class="p">;</span> 
@@ -186,7 +186,7 @@
 <p>一看就看的出来，一元就指的是一个参数一个结果，下来再看看二元的：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -195,7 +195,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_Arg1</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Arg2</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Result</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_Arg1</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Arg2</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">_Result</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="n">binary_function</span> 
 <span class="p">{</span> 
     <span class="k">typedef</span> <span class="n">_Arg1</span> <span class="n">first_argument_type</span><span class="p">;</span> 
@@ -208,7 +208,7 @@
 <p>一看就是针对于两个参数的操作符，使用时像下面这样正常继承就可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -216,7 +216,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_Tp</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">_Tp</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="nl">plus</span> <span class="p">:</span> <span class="k">public</span> <span class="n">binary_function</span><span class="o">&lt;</span><span class="n">_Tp</span><span class="p">,</span><span class="n">_Tp</span><span class="p">,</span><span class="n">_Tp</span><span class="o">&gt;</span> 
 <span class="p">{</span> 
     <span class="n">_Tp</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">_Tp</span><span class="o">&amp;</span> <span class="n">__x</span><span class="p">,</span> <span class="k">const</span> <span class="n">_Tp</span><span class="o">&amp;</span> <span class="n">__y</span><span class="p">)</span> <span class="k">const</span> 
@@ -230,7 +230,7 @@
 <p>下面代码实现两个仿函数，一个是找出较大数，一个是找较小数，并且有两种操作方式:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -260,7 +260,7 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
@@ -294,10 +294,10 @@
 <p>but,都说了主要是个STL算法用的，所以至该举个例子</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="n">sort</span><span class="p">(</span><span class="n">iv</span><span class="p">.</span><span class="n">begain</span><span class="p">(),</span> <span class="n">iv</span><span class="p">.</span><span class="n">end</span><span class="p">,</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">sort</span><span class="p">(</span><span class="n">iv</span><span class="p">.</span><span class="n">begain</span><span class="p">(),</span> <span class="n">iv</span><span class="p">.</span><span class="n">end</span><span class="p">,</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span>
 </code></pre></td></tr></table>
 </div>
 </div>

@@ -167,7 +167,7 @@
 <p>下面简单实现一个vector迭代器，重在看清其中原理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -226,7 +226,7 @@
 </span><span class="lnt">57
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 <span class="c1">//简单的Vector迭代器
 </span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
@@ -293,7 +293,7 @@
 <p>看似很简单是吧，看起来也是，问题来了，我传入了一个T模板类型，我想返回他的valueType类型怎么办，简单来说如果我传入一个自定义的类型想返回他的值类型怎么办，好像没办法，但c++利用声明内嵌类型的方法做到了，先看看代码，稍后讲解</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -345,7 +345,7 @@
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="err"> </span><span class="nc">A</span>
@@ -401,7 +401,7 @@
 <p>  那么问题又来了，上面萃取机中的T如果是普通指针类型不是自定义类型那么不久萃取不出来了，好像是这样，因为普通指针类型并不像上面的A类型即自定义类型有ValueType的内嵌声明。不过STL才不会这么笨，它提供了一种叫做特化的东东，看过我网站第一篇空间配置器的想必一定都知道了，要是不知道的，麻烦在我网站上搜一下偏特化，看一下，有了偏特化那么针对原生指针就可以这样。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -424,7 +424,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//类型萃取机T*特化
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//类型萃取机T*特化
 </span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="k">struct</span> <span class="n">traits</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span>
 <span class="p">{</span> 
     <span class="c1">//自定义类型中声明内嵌类型 
@@ -454,7 +454,7 @@
 上面说的几种还是很好理解，其实还有两种,一种就叫Difference这种类型就是记录两个迭代器之间距离，因此就可记录容量,最后一种叫iterator_categoty,见名知意，就是迭代器类型。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -465,7 +465,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">Category</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">Distance</span> <span class="o">=</span> <span class="n">ptrdiff_t</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">Pointer</span> <span class="o">=</span> <span class="n">T</span><span class="o">*</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">Reference</span> <span class="o">=</span> <span class="n">T</span><span class="o">&amp;&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">Category</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">Distance</span> <span class="o">=</span> <span class="n">ptrdiff_t</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">Pointer</span> <span class="o">=</span> <span class="n">T</span><span class="o">*</span><span class="p">,</span> <span class="k">class</span><span class="err"> </span><span class="nc">Reference</span> <span class="o">=</span> <span class="n">T</span><span class="o">&amp;&gt;</span>
 <span class="k">struct</span> <span class="n">Iterator</span>
 <span class="p">{</span> 
     <span class="k">typedef</span> <span class="n">Category</span> <span class="n">IteratorCategory</span><span class="p">;</span> <span class="c1">// 迭代器类型

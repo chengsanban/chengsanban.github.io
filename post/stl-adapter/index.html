@@ -176,12 +176,12 @@ STL中改变容器接口的就叫容器适配器，改变迭代器接口的称�
 <p>  像下面这种情况，原本的接口函数非常复杂back_insert_iterator&lt;_Container&gt;(__x)，也不宜用户理解，稍加封装把接口变为back_inserter(_Container&amp; __x) ，就看起来简单不少，虽然只是改了个名称。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt">1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="kr">inline</span> <span class="n">back_insert_iterator</span><span class="o">&lt;</span><span class="n">_Container</span><span class="o">&gt;</span>  
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kr">inline</span> <span class="n">back_insert_iterator</span><span class="o">&lt;</span><span class="n">_Container</span><span class="o">&gt;</span>  
 <span class="n">back_inserter</span><span class="p">(</span><span class="n">_Container</span><span class="o">&amp;</span> <span class="n">__x</span><span class="p">)</span> 
 <span class="p">{</span> <span class="k">return</span> <span class="n">back_insert_iterator</span><span class="o">&lt;</span><span class="n">_Container</span><span class="o">&gt;</span><span class="p">(</span><span class="n">__x</span><span class="p">);</span> <span class="p">}</span>
 </code></pre></td></tr></table>
@@ -197,7 +197,7 @@ STL中改变容器接口的就叫容器适配器，改变迭代器接口的称�
 //求最大值仿函数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="lnt"> 1
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -216,7 +216,7 @@ STL中改变容器接口的就叫容器适配器，改变迭代器接口的称�
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="err"> </span><span class="nc">Big</span><span class="p">{</span> <span class="p">........}</span> 
 <span class="c1">//求最小值仿函数
 </span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="err"> </span><span class="nc">T</span><span class="o">&gt;</span>
